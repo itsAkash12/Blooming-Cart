@@ -7,9 +7,7 @@ import Footer from "./components/Footer"
 function App() {
   return (
     <Box className="App">
-      <Navbar></Navbar>
       <AllRoutes />
-      <Footer></Footer>
     </Box>
   );
 }

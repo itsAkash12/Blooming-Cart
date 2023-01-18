@@ -14,8 +14,9 @@ const authenticator = require("../middlewares/authenticator")
 //Get All Products
 
 app.get("/",async(req,res)=>{
+    let query = req.query
     try{
-        let allProducts = await Products.find()
+        let allProducts = await Products.find(query)
         res.send(allProducts)
 
     }catch(e){

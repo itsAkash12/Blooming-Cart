@@ -1,9 +1,12 @@
-import { Box, Heading } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
+import SearchSection from "../components/landingPage/SearchSection";
+import TopSection from "../components/landingPage/TopSection";
 
 export default function Homepage() {
   return (
     <Box className="container">
-      <Heading> Hello team lets start !</Heading>
+      <TopSection></TopSection>
+      <SearchSection />
     </Box>
   );
 }

@@ -1,9 +1,17 @@
-import React from 'react'
+import { Box} from "@chakra-ui/react";
+import React from "react";
+import "../../styles/navbar.css";
+import MobNavbar from "./MobNavbar";
+import WebNavbar from "./WebNavbar";
 
 const Navbar = () => {
-  return (
-    <div>Navbar</div>
-  )
-}
 
-export default Navbar
+  return (
+    <Box position="sticky" top="0" className="container">
+      <WebNavbar />
+      <MobNavbar />
+    </Box>
+  );
+};
+
+export default Navbar;

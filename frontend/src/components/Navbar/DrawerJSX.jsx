@@ -26,7 +26,7 @@ const DrawerJSX = () => {
   const btnRef = useRef();
   return (
     <Box>
-      <button ref={btnRef} colorScheme="teal" onClick={onOpen}>
+      <button ref={btnRef} onClick={onOpen}>
         <FontAwesomeIcon color="white" size="xl" icon={faBars} />
         <Text fontWeight="bold" color="white">
           Menu
@@ -47,7 +47,7 @@ const DrawerJSX = () => {
               <Input placeholder="Enter Keyword" />
             </Box>
             {Categories_Data.map((el) => (
-              <Box p="10px" display="flex" justifyContent="space-between">
+              <Box key={el.category} p="10px" display="flex" justifyContent="space-between">
                 <Link>
                   <Text fontWeight="500">{el.category}</Text>
                 </Link>

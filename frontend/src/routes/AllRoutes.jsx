@@ -8,6 +8,7 @@ import Homepage from "../pages/Homepage";
 import Signup from "../pages/Signup"
 import Login from "../pages/Login"
 import PaymentsPage from "../pages/Cart/PaymentsPage";
+import Footer from "../components/Footer/Footer";
 import { Delivery } from "../pages/Cart/Delivery";
 
 export default function AllRoutes() {
@@ -26,6 +27,7 @@ export default function AllRoutes() {
         <Route path="/delivery" element={<Delivery />}></Route>
         <Route path="*" element={<h1>Page Not Found</h1>}></Route>
       </Routes>
+      <Footer></Footer>
     </Box>
 
   );

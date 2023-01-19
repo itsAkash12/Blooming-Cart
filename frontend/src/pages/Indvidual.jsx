@@ -1,12 +1,26 @@
 import React from 'react'
-import { Box, Text, Image, Button, Stack ,Wrap,SimpleGrid} from "@chakra-ui/react";
+import { Box, Text, Image, Button, Stack ,Wrap,SimpleGrid,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  FormControl,
+  FormLabel,
+  Input,
+  ModalCloseButton, useDisclosure} from "@chakra-ui/react";
 import { IoIosHeartEmpty, IoIosHeart } from "react-icons/io";
-import { useState,useEffect } from 'react';
+import { useState,useEffect, useRef } from 'react';
 
 import axios from "axios";
 
 const Indvidual = () => {
   const [data,setData]=useState([]);
+  const [modal, setModal] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const initialRef = useRef(null)
+  const finalRef = useRef(null)
 
 
   const pro = [
@@ -118,6 +132,9 @@ const Indvidual = () => {
   const handleCart=()=>{
 
   }
+  const hanldeEdit = () => {
+    setModal(true)
+  }
 
   useEffect(()=>{
     axios.get("http://localhost:8080/products?category=birthday")
@@ -134,7 +151,7 @@ const Indvidual = () => {
                 <SimpleGrid w="90%" spacing={3} columns={[2, 4]} >
                     {
                         pro && pro.map((el,i)=>(
-                            <Box key={i} w="100%" textAlign="center">
+                            <Box onClick={() => { onOpen(); hanldeEdit() }} cursor={"pointer"} key={i} w="100%" textAlign="center">
                                 <Box w="75%" m="auto">
                                 <Image w="100%" src={el.images}></Image>
                                 </Box> 
@@ -161,6 +178,35 @@ const Indvidual = () => {
                             </Box>
                         ))
                     }
+                    {
+                      pro && pro.map((el,i)=>(
+                      modal ? <Box><Modal
+                      initialFocusRef={initialRef}
+                      finalFocusRef={finalRef}
+                      isOpen={isOpen}
+                      onClose={onClose}
+                    >
+                      <ModalOverlay />
+                      <ModalContent>
+                        <ModalHeader>{el.name}</ModalHeader>
+                        <ModalCloseButton />
+                        <ModalBody pb={6}>
+                          
+            
+                          
+            
+                        </ModalBody>
+            
+                        <ModalFooter>
+                          <Button colorScheme='blue' mr={3}>
+                            Save
+                          </Button>
+                          <Button onClick={onClose}>Cancel</Button>
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal></Box> : null
+                      ))
+                  }
                    
                 </SimpleGrid>
             </Wrap>

@@ -3,6 +3,7 @@
     flex-direction: column;
     /* padding: 10px; */
     display: inline-block;
+    align-items: center;
     font-family: Helvetica;
     line-height: 22.88px;
     text-align: left;
@@ -12,15 +13,14 @@
     line-height: 22.88px;
     margin: 0px 0px 30px;
     padding: 0px 10px;
-    text-align: left
+    text-align: left;
 }
 
 .maindivEmtyCartDataBelow {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto;
-    /* gap: 20px; */
-    /* border: 1px solid black; */
+
 }
 
 /* .maindivEmtyCartDataBelow div{
@@ -85,19 +85,24 @@
     display: inline;
     font-size: 17px;
     line-height: 23.8px;
-    text-align: left
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .price {
     font-size: 17px;
     font-weight: 700;
     line-height: 23.8px;
-    text-align: left
+    text-align: left;
 }
 
 .image {
     width: 100%;
+    /* height: 400px; */
     object-fit: contain;
+   
 
 }
 
@@ -144,7 +149,7 @@
 /* } */
 .accordion{
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
     border: none;
 }
@@ -217,3 +222,50 @@
 .buttonRemove img {
     width: 15px;
 }
+@media (max-width: 1200px) {
+    .maindivEmtyCartDataBelow {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto;
+    
+    }
+    .maindivEmtyCartDataBelow1 {
+        width: 100%;
+        margin: auto;
+    }
+  }
+@media (max-width: 800px) {
+    .maindivEmtyCartDataBelow {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+    
+    }
+    .maindivEmtyCartDataBelow1 {
+        width: 100%;
+        margin: auto;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .maindivEmtyCartDataBelow {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+    
+    }
+    .maindivEmtyCartDataBelow1 {
+        width: 100%;
+        margin: auto;
+    }
+  }
+
+
+
+/* payments page 
+ */
+
+ .navbar{
+    display: flex;
+    justify-content: space-between;
+ }

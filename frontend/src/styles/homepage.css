@@ -1,0 +1,28 @@
+/* Top Section */
+
+.top_section_container {
+  background-color: #f4f2f7;
+}
+
+.top_section_container > a > p {
+  padding: 25px 0px;
+  font-size: large;
+  font-weight: 700;
+}
+.top_section_container > img {
+  height: 280px;
+  width: 95%;
+  margin: auto;
+}
+
+
+/* Search section */
+
+.search_section_container{
+    width: 65%;
+    height: 120px;
+    position: fixed;
+    top: 490px;
+    left: 200px;
+    background-color: black;
+}

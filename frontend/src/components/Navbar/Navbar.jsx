@@ -7,7 +7,7 @@ import WebNavbar from "./WebNavbar";
 const Navbar = () => {
 
   return (
-    <Box position="sticky" top="0" className="container">
+    <Box position="sticky" zIndex="999" top="0" className="container">
       <WebNavbar />
       <MobNavbar />
     </Box>

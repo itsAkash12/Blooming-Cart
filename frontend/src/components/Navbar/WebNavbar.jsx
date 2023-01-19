@@ -28,17 +28,17 @@ const WebNavbar = () => {
         <Box className="div_three_container_logo">
           <Image src={logo} alt="logo_of_website" />
         </Box>
-        <Box class="div_three_container_input-group">
+        <Box className="div_three_container_input-group">
           <input
             type="text"
-            class="div_three_container_input"
+            className="div_three_container_input"
             id="Email"
             name="title"
             placeholder="Enter Title or Keyword"
-            autocomplete="off"
+            autoComplete="off"
           />
           <input
-            class="div_three_container_button--submit"
+            className="div_three_container_button--submit"
             value="SEARCH"
             type="submit"
           />
@@ -70,7 +70,7 @@ const WebNavbar = () => {
       </Box>
       <Box className="div_four_container">
         {Categories_Data.map((el) => (
-          <Link>
+          <Link key={el.category}>
             <Text>{el.category}</Text>
           </Link>
         ))}

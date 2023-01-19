@@ -6,6 +6,7 @@ import CartPage from "../pages/Cart/Cart";
 import { ShopingCart } from "../pages/Cart/ShopingCart";
 import Homepage from "../pages/Homepage";
 import PaymentsPage from "../pages/Cart/PaymentsPage";
+import Footer from "../components/Footer/Footer";
 
 export default function AllRoutes() {
   return (
@@ -19,6 +20,7 @@ export default function AllRoutes() {
         <Route path="/shoping" element={<ShopingCart />}></Route>
         <Route path="*" element={<h1>Page Not Found</h1>}></Route>
       </Routes>
+      <Footer></Footer>
     </Box>
   );
 }

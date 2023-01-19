@@ -137,10 +137,6 @@ const Indvidual = () => {
                                     <Text color="blue"  fontSize="17px">  ₹ {el.price} /-</Text>
                                     <Text as="s" m="3px 4px" fontSize="14px"> ₹ {el.strike_price}/-</Text>
                                     </Box>
-                                
-
-                                
-                                
                                 <Box display="flex" m="auto" alignItems="center" justifyContent="center">
                                 
                                 <Button onClick={()=>handleCart(el._id)} backgroundColor={process.env.REACT_APP_BG_COLOR} mr="5px"  size='sm'>
@@ -149,13 +145,8 @@ const Indvidual = () => {
                                 <Button  color={process.env.REACT_APP_BG_COLOR} size='sm'>
                                     <IoIosHeart size="24px" ></IoIosHeart>
                                 </Button>
-                                </Box>
-
-                          
-                                
+                                </Box>   
                             </Box>
-                           
-
                         ))
                     }
                    

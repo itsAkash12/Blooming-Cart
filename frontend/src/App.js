@@ -8,7 +8,7 @@ function App() {
   return (
     <Box className="App">
       <AllRoutes />
-      <Indvidual/>
+      {/* <Indvidual/> */}
     </Box>
   );
 }

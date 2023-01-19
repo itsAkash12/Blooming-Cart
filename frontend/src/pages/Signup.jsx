@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from"axios"
 import {FcGoogle, }from "react-icons/fc"
-import {FaMicrosoft }from "react-icons/fa"
+import {FaFacebook}from "react-icons/fa"
 import {AiOutlineEye }from "react-icons/ai"
 import {AiOutlineEyeInvisible }from "react-icons/ai"
 import signup_cover from "../assets/images/signup_cover.jpg"
@@ -124,12 +124,10 @@ const handleSubmit=(e)=>{
               <Button colorScheme={"none"} border={"1px solid lightgrey"} _hover={{bg: '#e2e6eb',}} leftIcon={<FcGoogle fontSize={"20px"} /> } textColor={"#777E85"} variant={'solid'} height={"34px"} fontSize={"14px"} >
               Sign Up with Google
               </Button>
-              <Button colorScheme={"none"} border={"1px solid lightgrey" } _hover={{bg: '#e2e6eb',}} leftIcon={<FaMicrosoft  fontSize={"20px"}/>} textColor={"#777E85"} variant={'solid'} height={"34px"} fontSize={"14px"}>
-              Sign Up with Microsoft
+              <Button colorScheme={"none"} border={"1px solid lightgrey" } _hover={{bg: '#e2e6eb',}} leftIcon={<FaFacebook  fontSize={"20px"}/>} textColor={"#777E85"} variant={'solid'} height={"34px"} fontSize={"14px"}>
+              Sign Up with Facebook
               </Button>
-              {/* <Button colorScheme={"none"} border={"1px solid lightgrey"} _hover={{bg: '#e2e6eb',}} leftIcon={<FaApple color={"black"} fontSize={"20px"}/>} textColor={"#777E85"} variant={'solid'} height={"34px"} fontSize={"14px"}>
-              Sign Up with Apple
-              </Button> */}
+             
               </Stack>
               <Divider orientation={'horizontal'}  color={"blue"}/>
            <Heading fontSize={'14px'} fontWeight={"10px"} paddingBottom="20px">Already have an account?<Link onClick={()=>navigate("/login")} color="blue"> Login</Link></Heading>

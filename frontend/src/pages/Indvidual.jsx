@@ -1,8 +1,14 @@
 import React from 'react'
 import { Box, Text, Image, Button, Stack ,Wrap,SimpleGrid} from "@chakra-ui/react";
 import { IoIosHeartEmpty, IoIosHeart } from "react-icons/io";
+import { useState,useEffect } from 'react';
+
+import axios from "axios";
 
 const Indvidual = () => {
+  const [data,setData]=useState([]);
+
+
   const pro = [
     {
       name:"aniversery flower pot",
@@ -112,6 +118,12 @@ const Indvidual = () => {
   const handleCart=()=>{
 
   }
+
+  useEffect(()=>{
+    axios.get("http://localhost:8080/products?category=birthday")
+    .then((res)=>console.log(res))
+    .catch((er)=>console.log(er))
+  })
   return (
     <div>
        <Text textAlign="center" fontSize="21px" textDecoration="underline 2px #088DF5" fontWeight="semibold" margin="15px">Individual item</Text>
@@ -122,7 +134,7 @@ const Indvidual = () => {
                 <SimpleGrid w="90%" spacing={3} columns={[2, 4]} >
                     {
                         pro && pro.map((el,i)=>(
-                            <Box  w="100%" textAlign="center">
+                            <Box key={i} w="100%" textAlign="center">
                                 <Box w="75%" m="auto">
                                 <Image w="100%" src={el.images}></Image>
                                 </Box> 

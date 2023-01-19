@@ -26,7 +26,7 @@ const WebNavbar = () => {
     <Box position="sticky" top="0" className="stickyNavbar">
       <Box className="div_three_container">
         <Box className="div_three_container_logo">
-          <Image src={logo} alt="logo_of_website" />
+          <Link to="/"><Image src={logo} alt="logo_of_website" /></Link>
         </Box>
         <Box className="div_three_container_input-group">
           <input
@@ -44,7 +44,7 @@ const WebNavbar = () => {
           />
         </Box>
         <Box className="div_three_container_Avtar">
-          <Link>
+          <Link to="/login">
             <Image src={avatar} alt="avatar" />
             <Text fontSize="xs" fontWeight="bold">
               Login
@@ -60,7 +60,7 @@ const WebNavbar = () => {
           </Link>
         </Box>
         <Box className="div_three_container_Avtar">
-          <Link>
+          <Link to="/cart">
             <Image src={cart} alt="cart" />
             <Text fontSize="12px" fontWeight="bold">
               Cart

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Heading, Image, Link, Text } from "@chakra-ui/react";
+import { Box, Image, Link, Text } from "@chakra-ui/react";
 import "../../styles/homepage.css";
 const COLOR = process.env.REACT_APP_BG_COLOR;
 

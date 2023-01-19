@@ -1,8 +1,28 @@
 import React from 'react'
-import { Box, Text, Image, Button, Stack ,Wrap,SimpleGrid} from "@chakra-ui/react";
+import { Box, Text, Image, Button, Stack ,Wrap,SimpleGrid,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  FormControl,
+  FormLabel,
+  Input,
+  ModalCloseButton, useDisclosure} from "@chakra-ui/react";
 import { IoIosHeartEmpty, IoIosHeart } from "react-icons/io";
+import { useState,useEffect, useRef } from 'react';
+
+import axios from "axios";
 
 const Indvidual = () => {
+  const [data,setData]=useState([]);
+  const [modal, setModal] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const initialRef = useRef(null)
+  const finalRef = useRef(null)
+
+
   const pro = [
     {
       name:"aniversery flower pot",
@@ -112,6 +132,15 @@ const Indvidual = () => {
   const handleCart=()=>{
 
   }
+  const hanldeEdit = () => {
+    setModal(true)
+  }
+
+  useEffect(()=>{
+    axios.get("http://localhost:8080/products?category=birthday")
+    .then((res)=>console.log(res))
+    .catch((er)=>console.log(er))
+  })
   return (
     <div>
        <Text textAlign="center" fontSize="21px" textDecoration="underline 2px #088DF5" fontWeight="semibold" margin="15px">Individual item</Text>
@@ -122,7 +151,7 @@ const Indvidual = () => {
                 <SimpleGrid w="90%" spacing={3} columns={[2, 4]} >
                     {
                         pro && pro.map((el,i)=>(
-                            <Box  w="100%" textAlign="center">
+                            <Box onClick={() => { onOpen(); hanldeEdit() }} cursor={"pointer"} key={i} w="100%" textAlign="center">
                                 <Box w="75%" m="auto">
                                 <Image w="100%" src={el.images}></Image>
                                 </Box> 
@@ -137,10 +166,6 @@ const Indvidual = () => {
                                     <Text color="blue"  fontSize="17px">  ₹ {el.price} /-</Text>
                                     <Text as="s" m="3px 4px" fontSize="14px"> ₹ {el.strike_price}/-</Text>
                                     </Box>
-                                
-
-                                
-                                
                                 <Box display="flex" m="auto" alignItems="center" justifyContent="center">
                                 
                                 <Button onClick={()=>handleCart(el._id)} backgroundColor={process.env.REACT_APP_BG_COLOR} mr="5px"  size='sm'>
@@ -149,15 +174,39 @@ const Indvidual = () => {
                                 <Button  color={process.env.REACT_APP_BG_COLOR} size='sm'>
                                     <IoIosHeart size="24px" ></IoIosHeart>
                                 </Button>
-                                </Box>
-
-                          
-                                
+                                </Box>   
                             </Box>
-                           
-
                         ))
                     }
+                    {
+                      pro && pro.map((el,i)=>(
+                      modal ? <Box><Modal
+                      initialFocusRef={initialRef}
+                      finalFocusRef={finalRef}
+                      isOpen={isOpen}
+                      onClose={onClose}
+                    >
+                      <ModalOverlay />
+                      <ModalContent>
+                        <ModalHeader>{el.name}</ModalHeader>
+                        <ModalCloseButton />
+                        <ModalBody pb={6}>
+                          
+            
+                          
+            
+                        </ModalBody>
+            
+                        <ModalFooter>
+                          <Button colorScheme='blue' mr={3}>
+                            Save
+                          </Button>
+                          <Button onClick={onClose}>Cancel</Button>
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal></Box> : null
+                      ))
+                  }
                    
                 </SimpleGrid>
             </Wrap>

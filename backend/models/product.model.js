@@ -21,7 +21,8 @@ const productSchema = new mongoose.Schema({
    rating : {type : Number,required : true},
    colors : {type : String , required : true},
    delivery_time : {type : Number , default : 3},
-   sizes : {type : String ,required : true}
+   sizes : {type : String ,required : true},
+   category:{type:String , required:true}
 
 })
 const Products = mongoose.model("product" , productSchema)

@@ -7,7 +7,8 @@ import Indvidual from './pages/Indvidual';
 function App() {
   return (
     <Box className="App">
-      <AllRoutes />
+
+      {/* <AllRoutes /> */}
       <Indvidual/>
     </Box>
   );

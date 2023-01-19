@@ -13,11 +13,12 @@ const authenticator = require("../middlewares/authenticator")
 
 //Get All Products
 
-app.get("/",async(req,res)=>{
-    let query = req.query
+app.get("/" , async(req,res)=>{
+    const query = req.query
+    // console.log(query)
     try{
-        let allProducts = await Products.find(query)
-        res.send(allProducts)
+      const allProducts = await Products.find(query)
+      res.send(allProducts)
 
     }catch(e){
         res.send(e.message)

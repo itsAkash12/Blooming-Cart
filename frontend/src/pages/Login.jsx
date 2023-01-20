@@ -33,7 +33,7 @@ const Login = () => {
   };
 
   const handleNavigate = () => {
-    navigate(`http://localhost:8080/users/signup`);
+    navigate(`/signup`);
   };
 
   const handleSubmit = (e) => {

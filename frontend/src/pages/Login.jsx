@@ -50,10 +50,12 @@ const Login = () => {
           navigate("/");
         } else {
           changeError(response.data.error);
+          alert(response.data)
         }
       })
       .catch((err) => {
         console.log(err.message);
+        
       });
   };
 

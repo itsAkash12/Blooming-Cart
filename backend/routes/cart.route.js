@@ -24,10 +24,10 @@ app.get("/" ,authenticator , async(req,res)=>{
 // Add Product in Cart
 
 app.post("/",authenticator,async(req,res)=>{
-    const {delivery_time ,category , image , productname , price , strike_price , size , quantity,userID} = req.body
+    const {category , image , productname , price , strike_price , size , quantity,userID} = req.body
     // console.log(req.body)
     try{
-     let addProductToCart = new Carts({delivery_time : delivery_time, category : category , image : image , productname : productname , price : price , strike_price : strike_price ,  size : size  , quantity : quantity , userID:userID})
+     let addProductToCart = new Carts({delivery_time:3 , category : category , image : image , productname : productname , price : price , strike_price : strike_price ,  size : size  , quantity : quantity , userID:userID})
      await addProductToCart.save()
      res.send("Add Item To Cart")
     }catch(e){

@@ -53,7 +53,8 @@ app.post("/login",async(req,res)=>{
                 
             }
         });
-    }else{
+    }
+    else{
         res.send(`User does not exist with Email Id ${email}`)
     }
 

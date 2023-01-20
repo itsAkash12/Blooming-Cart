@@ -47,7 +47,7 @@ app.post("/login",async(req,res)=>{
             if(result){
                 let token = jwt.sign({id : user._id , role : user.role , email : user.email , name : user.name},key)
                 res.send({msg : "Login Success" , flowerToken : token , userData: {name : user.name , role : user.role , id : user.id } })
-                
+                res.send({msg : "Login Success" , flowerToken : token , userData : {name : user.name , id : user._id , role : user.role} })                
             }else{
                 res.send("Wrong Credentials")
                 

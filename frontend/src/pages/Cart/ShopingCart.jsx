@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "./cart.css"
+import {  DeleteIcon} from '@chakra-ui/icons'
 import { DeleteIcon } from '@chakra-ui/icons'
 import {
     Accordion,
@@ -30,6 +31,10 @@ export const ShopingCart = () => {
         { id: 12, img: "https://cdn3.1800flowers.com/wcsstore/Flowers/images/catalog/191167xltoppicksnipex.jpg?height=456&width=418&sharpen=a0.5,r1,t1&quality=80&auto=webp&optimize={medium}", name: 'Item 12', price: 19.99 },
 
     ]);
+    useEffect(()=>{
+        axios.get("http://localhost:8080/carts").then(res=>console.log(res.data)).catch(err=>console.log("err"))
+      })
+    
     useEffect(() => {
         axios.get("http://localhost:8080/carts").then(res => console.log(res.data)).catch(err => console.log("err"))
     }, [])
@@ -84,6 +89,8 @@ export const ShopingCart = () => {
                                     </div>
                                     <div>
                                         <button className='buttonRemove' onClick={() => handleDelete(ele.id)}>
+                                            <DeleteIcon/>
+
                                             <DeleteIcon />
                                         </button>
                                     </div>

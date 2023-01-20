@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import "./cart.css"
 
@@ -30,7 +31,7 @@ const handleNavigate = ()=>{
     
   ]);
 
-
+ 
 
 //   const addToCart = (item) => {
 //     setItems([...items, item]);

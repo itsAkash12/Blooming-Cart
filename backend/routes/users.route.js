@@ -12,6 +12,7 @@ app.post("/signup",async(req,res)=>{
     const {name,email,password} = req.body;
     try{
        let existingUser = await Users.findOne({email})
+       console.log(existingUser)
        if(existingUser){
         res.send(`User with Email Id ${email} already exist`)
        }

@@ -6,7 +6,7 @@ app.use(express.json())
 
 // Get All Data in Cart
 
-app.get("/" ,authenticator , async(req,res)=>{
+app.get("/",authenticator , async(req,res)=>{
     const {userID} = req.body
     try{
        let AllCartData = await Carts.find({userID:userID})

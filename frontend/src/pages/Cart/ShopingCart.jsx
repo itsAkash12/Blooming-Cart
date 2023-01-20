@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./cart.css"
+import {  DeleteIcon} from '@chakra-ui/icons'
 import {
     Accordion,
     AccordionItem,
@@ -8,6 +9,7 @@ import {
     AccordionIcon,
     Box
 } from '@chakra-ui/react'
+import axios from 'axios';
 export const ShopingCart = () => {
     const [selectedValue, setSelectedValue] = useState(1);
     const [expnad, setExpand] = useState(false);
@@ -27,6 +29,10 @@ export const ShopingCart = () => {
         { id: 12, img: "https://cdn3.1800flowers.com/wcsstore/Flowers/images/catalog/191167xltoppicksnipex.jpg?height=456&width=418&sharpen=a0.5,r1,t1&quality=80&auto=webp&optimize={medium}", name: 'Item 12', price: 19.99 },
 
     ]);
+    useEffect(()=>{
+        axios.get("http://localhost:8080/carts").then(res=>console.log(res.data)).catch(err=>console.log("err"))
+      })
+    
 
 
     const handleCahnge = (e) => {
@@ -50,7 +56,7 @@ export const ShopingCart = () => {
                             <h1>Item {ele.id} of {cartItems.length}:</h1>
                             <hr />
                             <div className='prodcart'>
-                                <img src={ele.img} alt="img" />
+                                <img src={ele.image} alt="img" />
                                 <div className='productItem'>
                                     <div>
                                         <h4>{ele.name}</h4>
@@ -73,7 +79,7 @@ export const ShopingCart = () => {
                                     </div>
                                     <div>
                                         <button className='buttonRemove' onClick={() => handleDelete(ele.id)}>
-                                            <img src="https://cdn-icons-png.flaticon.com/512/1345/1345874.png" alt="" />
+                                            <DeleteIcon/>
                                         </button>
                                     </div>
 

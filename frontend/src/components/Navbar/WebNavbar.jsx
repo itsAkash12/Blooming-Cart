@@ -70,7 +70,7 @@ const WebNavbar = () => {
       </Box>
       <Box className="div_four_container">
         {Categories_Data.map((el) => (
-          <Link key={el.category}>
+          <Link key={el.category} to={el.url}>
             <Text>{el.category}</Text>
           </Link>
         ))}

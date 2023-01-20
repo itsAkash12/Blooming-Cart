@@ -38,37 +38,48 @@ export const Brand_Images = [
 
 export const Categories_Data = [
   {
-    category:"VALENTINE'S"
+    category:"VALENTINE'S",
+    url:"/ind/valentine"
   },
   {
-    category:"BIRTHDAY"
+    category:"BIRTHDAY",
+    url:"/ind/birthday"
   },
   {
-    category:"SYMPATHY"
+    category:"SYMPATHY",
+    url:"/ind/sympathy"
   },
   {
-    category:"OCCASION"
+    category:"OCCASION",
+    url:"/ind/anniversary"
   },
   {
-    category:"FLOWERS"
+    category:"FLOWERS",
+    url:"/ind/plants"
   },
   {
-    category:"PLANTS"
+    category:"PLANTS",
+    url:"/ind/plants"
   },
   {
-    category:"GIFT BASKETS & FOOD"
+    category:"GIFT BASKETS & FOOD",
+    url:"/ind/Gift Baskets"
   },
   {
-    category:"GIFTS & MORE"
+    category:"GIFTS & MORE",
+    url:"/ind/sameday delivery"
   },
   {
-    category:"SAME-DAY DELIVERY"
+    category:"SAME-DAY DELIVERY",
+    url:"/ind/sameday delivery"
   },
   {
-    category:"SALE"
+    category:"SALE",
+    url:"/ind/sale"
   },
   {
-    category:"COMMUNITY"
+    category:"COMMUNITY",
+    url:"/ind/sale"
   },
 ]
 

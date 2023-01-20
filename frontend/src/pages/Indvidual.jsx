@@ -1,32 +1,21 @@
 import React from 'react'
 import {
-  Box, Text, Image, Button, Stack, Wrap, SimpleGrid,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  FormControl,
-  FormLabel,
-  Input,
-  ModalCloseButton, useDisclosure
+  Box, Text, Image, Button, Wrap, SimpleGrid,
 } from "@chakra-ui/react";
-import { IoIosHeartEmpty, IoIosHeart } from "react-icons/io";
-import { useState, useEffect, useRef } from 'react';
-import Productdata from "./Productdata"
+import {IoIosHeart } from "react-icons/io";
+import { useState, useEffect } from 'react';
+
+import { useParams } from 'react-router-dom';
 
 import axios from "axios";
 import { useNavigate } from 'react-router';
 
 
 const Indvidual = () => {
+  const {params}=useParams();
   let navigate = useNavigate();
   const [data, setData] = useState([]);
-  const [modal, setModal] = useState(false);
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const initialRef = useRef(null)
-  const finalRef = useRef(null)
+
 
 
 
@@ -56,15 +45,21 @@ const Indvidual = () => {
   }
 
   useEffect(() => {
-    axios.get("http://localhost:8080/products?category=birthday")
+    if(params){
+      axios.get(`http://localhost:8080/products?category=${params}`)
       .then((res) => setData(res.data))
       .catch((er) => console.log(er))
-  }, [])
+    }else{
+      axios.get(`http://localhost:8080/products`)
+      .then((res) => setData(res.data))
+      .catch((er) => console.log(er))
+    }
+  }, [params])
   console.log(data)
 
   return (
     <div>
-      <Text textAlign="center" fontSize="21px" textDecoration="underline 2px #088DF5" fontWeight="semibold" margin="15px">Individual item</Text>
+      <Text textAlign="center" fontSize="21px" textDecoration="underline 2px #088DF5" fontWeight="semibold" margin="15px">{params}</Text>
       <Wrap justify="center">
         <SimpleGrid w="90%" spacing={3} columns={[2, 4]} >
           {

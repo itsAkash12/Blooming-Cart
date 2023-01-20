@@ -52,17 +52,26 @@ setUser({...user,[name]:value})
 
 
 const handleSubmit=(e)=>{
+  if(user.password.length<8){
+    alert("Password must be of atleast 8 digit")
+    return
+  }
   e.preventDefault()
-  let name=user.firstname+""+user.lastname
-  axios.post("https:localhost:8080/users/signup",{
+  let name=user.firstname +""+ user.lastname
+  axios.post(`http://localhost:8080/users/signup`,{
     name:name,
     email:user.email,
     password:user.password
   })
   .then((response)=>{
- 
-    if(response.data.message==='Registered Successfully'){
+    
+  
+    if(response.data==='Signup Successfully'){
       navigate("/login")
+    }
+    if(response.data===`User with Email Id ${user.email} already exist`){
+
+      alert("User Already Exist")
     }
     if(response.data.error!==false) {
       changeError(response.data.error)

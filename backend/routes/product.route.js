@@ -17,7 +17,7 @@ app.get("/" , async(req,res)=>{
     const query = req.query
     // console.log(query)
     try{
-      const allProducts = await Products.find()
+      const allProducts = await Products.find(query)
       res.send(allProducts)
 
     }catch(e){

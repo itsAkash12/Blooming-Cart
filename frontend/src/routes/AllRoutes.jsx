@@ -16,6 +16,7 @@ import Dashboard from "../pages/AdminPages/Dashboard";
 import Allproducts from "../pages/AdminPages/Allproducts";
 import Order from "../pages/AdminPages/Order";
 import Adding from "../pages/AdminPages/Adding";
+import Productdata from "../pages/Productdata";
 
 export default function AllRoutes() {
   return (

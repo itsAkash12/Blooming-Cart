@@ -20,7 +20,7 @@ const Productdata = () => {
       },[])
       console.log(data)
   return (
-    <Box>
+    <Box mb="100px">
         <Box w="90%"  margin="auto" gap="10%" marginTop="50px" display={"flex"}>
           <Box w="53%" h="auto" border="1px solid red" display="flex" >
             <Box w="32%" h="100px" border="1px solid yellow">

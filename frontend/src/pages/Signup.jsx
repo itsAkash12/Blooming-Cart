@@ -93,20 +93,20 @@ const handleSubmit=(e)=>{
             <Heading fontSize={'1.625rem'} fontWeight={"16px"} color={"black"}>Create Your Account</Heading>
           <form onSubmit={handleSubmit}>
             <FormControl >
-              <FormLabel fontSize={"14px"} color={"#777e85"}> First Name</FormLabel>
+              <FormLabel fontSize={"14px"} color={"#e7b270"}> First Name</FormLabel>
               <Input type="text" height={"34px"} placeholder={"Gaurav"} value={user.firstname} name="firstname" onChange={handleChange}/>
             </FormControl>
             <FormControl >
-              <FormLabel fontSize={"14px"} color={"#777e85"}> Last Name</FormLabel>
+              <FormLabel fontSize={"14px"} color={"#e7b270"}> Last Name</FormLabel>
               <Input type="text" height={"34px"} placeholder={"Sudhanshu"} value={user.lastname} name="lastname" onChange={handleChange}/>
             </FormControl>
             
             <FormControl >
-              <FormLabel fontSize={"14px"} color={"#777e85"}>Email </FormLabel>
+              <FormLabel fontSize={"14px"} color={"#e7b270"}>Email </FormLabel>
               <Input type="email"  height={"34px"}  placeholder="gs@gmail.com" value={user.email} name="email" onChange={handleChange}/>
             </FormControl>
             <FormControl >
-              <FormLabel fontSize={"14px"} color={"#777e85"}>Password</FormLabel>
+              <FormLabel fontSize={"14px"} color={"#e7b270"}>Password</FormLabel>
               <InputGroup>
               <Input type={(open===false)?"password":"text"} height={"34px"}  placeholder="Enter your password" value={user.password} name="password" onChange={handleChange}/>
             <InputRightElement><Box>{(open===false)? <AiOutlineEyeInvisible onClick={toggle} />:<AiOutlineEye onClick={toggle}/>}</Box></InputRightElement>  

@@ -26,25 +26,25 @@ const WebNavbar = () => {
     <Box position="sticky" top="0" className="stickyNavbar">
       <Box className="div_three_container">
         <Box className="div_three_container_logo">
-          <Image src={logo} alt="logo_of_website" />
+          <Link to="/"><Image src={logo} alt="logo_of_website" /></Link>
         </Box>
-        <Box class="div_three_container_input-group">
+        <Box className="div_three_container_input-group">
           <input
             type="text"
-            class="div_three_container_input"
+            className="div_three_container_input"
             id="Email"
             name="title"
             placeholder="Enter Title or Keyword"
-            autocomplete="off"
+            autoComplete="off"
           />
           <input
-            class="div_three_container_button--submit"
+            className="div_three_container_button--submit"
             value="SEARCH"
             type="submit"
           />
         </Box>
         <Box className="div_three_container_Avtar">
-          <Link>
+          <Link to="/login">
             <Image src={avatar} alt="avatar" />
             <Text fontSize="xs" fontWeight="bold">
               Login
@@ -60,7 +60,7 @@ const WebNavbar = () => {
           </Link>
         </Box>
         <Box className="div_three_container_Avtar">
-          <Link>
+          <Link to="/cart">
             <Image src={cart} alt="cart" />
             <Text fontSize="12px" fontWeight="bold">
               Cart
@@ -70,7 +70,7 @@ const WebNavbar = () => {
       </Box>
       <Box className="div_four_container">
         {Categories_Data.map((el) => (
-          <Link>
+          <Link key={el.category}>
             <Text>{el.category}</Text>
           </Link>
         ))}

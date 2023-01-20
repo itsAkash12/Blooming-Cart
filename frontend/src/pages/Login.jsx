@@ -18,7 +18,7 @@ import { FaFacebook } from "react-icons/fa";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
-import blooming_cart from "../assets/images/blooming_cart.jpg";
+import blooming_cart from "../assets/images/Blooming Cart.png";
 import signup_backcover from "../assets/images/signup_backcover.jpg";
 const Login = () => {
   const navigate = useNavigate();

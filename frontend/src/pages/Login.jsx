@@ -33,7 +33,9 @@ const Login = () => {
   };
 
   const handleNavigate = () => {
-    navigate(`http://localhost:8080/users/signup`);
+
+    navigate("/signup");
+
   };
 
   const handleSubmit = (e) => {
@@ -44,8 +46,9 @@ const Login = () => {
         password: user.password,
       })
       .then((response) => {
-        if (response.data.token) {
-          localStorage.setItem("token", response.data.token);
+        console.log(response)
+        if (response.data.flowerToken) {
+          localStorage.setItem("token", response.data.flowerToken);
           navigate("/");
         } else {
           changeError(response.data.error);
@@ -175,18 +178,9 @@ const Login = () => {
                   </Stack>
                   <Divider orientation={"horizontal"} colorScheme={"black"} />
                   <Flex justifyContent={"space-between"}>
-                    <Text color={"clack"} fontSize={"14px"}>
-                      Not registered?{" "}
-                      <span
-                        cursor={"pointer"}
-                        onClick={handleNavigate}
-                        color={"#200589"}
-                        fontSize={"14px"}
-                      >
-                        Create Account
-                      </span>
-                    </Text>
-                  </Flex>
+                <Text color={"#3070F0"} fontSize={"14px"}>Not Registered?</Text>
+               <Text cursor={'pointer'} onClick={handleNavigate} color={"#3070F0"} fontSize={"14px"}>Create Your Account</Text>
+              </Flex>
                 </Stack>
               </Stack>
             </Stack>

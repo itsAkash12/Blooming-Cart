@@ -33,13 +33,13 @@ const Login = () => {
   };
 
   const handleNavigate = () => {
-    navigate("/signup");
+    navigate(`http://localhost:8080/users/signup`);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://blooming_cart.onrender.com/login", {
+      .post(`http://localhost:8080/users/login`, {
         email: user.email,
         password: user.password,
       })
@@ -96,7 +96,7 @@ const Login = () => {
                   mt="12px"
                   textAlign="center"
                 >
-                  Log Into Blooming Cart
+                  Login Into Blooming Cart
                 </Heading>
               </Box>
               <Stack p={6}>

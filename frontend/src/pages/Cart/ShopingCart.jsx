@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "./cart.css"
 import {  DeleteIcon} from '@chakra-ui/icons'
-import { DeleteIcon } from '@chakra-ui/icons'
+
 import {
     Accordion,
     AccordionItem,

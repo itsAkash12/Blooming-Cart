@@ -16,6 +16,7 @@ import Dashboard from "../pages/AdminPages/Dashboard";
 import Allproducts from "../pages/AdminPages/Allproducts";
 import Order from "../pages/AdminPages/Order";
 import Adding from "../pages/AdminPages/Adding";
+import Productdata from "../pages/Productdata";
 
 export default function AllRoutes() {
   return (
@@ -32,7 +33,7 @@ export default function AllRoutes() {
         <Route path="/payment" element={<PaymentsPage />}></Route>
         <Route path="/delivery" element={<Delivery />}></Route>
         <Route path="/ind" element={<Indvidual />}></Route>
-        <Route path="/:params" element={<Indvidual />}></Route>
+        <Route path="/ind/:params" element={<Indvidual />}></Route>
         <Route path="/admin" element={<Dashboard />}></Route>
         <Route path="/admin/users" element={<Allusers></Allusers>} />
         <Route path="/admin/products" element={<Allproducts />} />

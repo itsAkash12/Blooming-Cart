@@ -25,10 +25,10 @@ const Productdata = () => {
           <Box w="53%" h="auto" border="1px solid red" display="flex" >
             <Box w="32%" h="100px" border="1px solid yellow">
             <Box   border="1px solid teal">
-              <Image src={data.multi_image[0]}></Image>
+              <Image src={ data.multi_image ? data.multi_image[0] : "https://cdn3.1800flowers.com/wcsstore/Flowers/images/catalog/104518alt_viewc.jpg?width=100&height=110&quality=90&auto=webp&optimize={medium}" }></Image>
             </Box>
             <Box   border="1px solid teal">
-            <Image w="90%" src={data.multi_image[1]}></Image>
+            <Image w="90%" src={ data.multi_image && data.multi_image[1]} ></Image>
             </Box>
             </Box>
             <Box  border="1px solid teal">

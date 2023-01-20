@@ -22,7 +22,7 @@ import { useNavigate } from 'react-router';
 
 
 const Indvidual = () => {
-  const {url}=useParams();
+  const {params}=useParams();
   let navigate = useNavigate();
   const [data, setData] = useState([]);
 
@@ -55,7 +55,7 @@ const Indvidual = () => {
   }
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/products?category=${url}`)
+    axios.get(`http://localhost:8080/products?category=${params}`)
       .then((res) => setData(res.data))
       .catch((er) => console.log(er))
   }, [])
@@ -63,7 +63,7 @@ const Indvidual = () => {
 
   return (
     <div>
-      <Text textAlign="center" fontSize="21px" textDecoration="underline 2px #088DF5" fontWeight="semibold" margin="15px">Individual item</Text>
+      <Text textAlign="center" fontSize="21px" textDecoration="underline 2px #088DF5" fontWeight="semibold" margin="15px">{params}</Text>
       <Wrap justify="center">
         <SimpleGrid w="90%" spacing={3} columns={[2, 4]} >
           {

@@ -58,7 +58,7 @@ const Indvidual = () => {
     axios.get(`http://localhost:8080/products?category=${params}`)
       .then((res) => setData(res.data))
       .catch((er) => console.log(er))
-  }, [])
+  }, [params])
   console.log(data)
 
   return (

@@ -58,7 +58,7 @@ const Indvidual = () => {
   console.log(data)
 
   return (
-    <div>
+    <div style={{marginBottom:"100px"}}>
       <Text textAlign="center" fontSize="21px" textDecoration="underline 2px #088DF5" fontWeight="semibold" margin="15px">{params}</Text>
       <Wrap justify="center">
         <SimpleGrid w="90%" spacing={3} columns={[2, 4]} >

@@ -12,6 +12,7 @@ import {
   Image,
   Text,
   Box,
+  useToast
 } from "@chakra-ui/react";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
@@ -21,6 +22,7 @@ import { useNavigate, Link } from "react-router-dom";
 import blooming_cart from "../assets/images/Blooming Cart.png";
 import signup_backcover from "../assets/images/signup_backcover.jpg";
 const Login = () => {
+  const toast = useToast();
   const navigate = useNavigate();
   const [error, changeError] = useState("");
   const [user, setUser] = useState({
@@ -49,15 +51,37 @@ const Login = () => {
         console.log(response)
         if (response.data.flowerToken) {
           localStorage.setItem("token", response.data.flowerToken);
+          toast({
+            title: "Welcome Back",
+            description: "Successfully Logged In",
+            status: "success",
+            position: "top",
+            duration: 3000,
+            isClosable: true,
+          });
           navigate("/");
         } else {
           changeError(response.data.error);
-          alert(response.data)
+          return toast({
+            title: "Error",
+            description: "Invalid Credentials",
+            status: "error",
+            position: "top",
+            duration: 3000,
+            isClosable: true,
+          });
         }
       })
       .catch((err) => {
         console.log(err.message);
-        
+        return toast({
+          title: "Error",
+          description: "Authentication Failed, Try Again",
+          status: "error",
+          position: "top",
+          duration: 3000,
+          isClosable: true,
+        });
       });
   };
 

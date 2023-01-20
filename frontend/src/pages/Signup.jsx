@@ -40,7 +40,6 @@ const Signup = () => {
   setOpen(!open)
  }
   const [user,setUser]=useState({
-    username:"",
     firstname:"",
     lastname:"",
     email:"",
@@ -54,10 +53,9 @@ setUser({...user,[name]:value})
 
 const handleSubmit=(e)=>{
   e.preventDefault()
-  axios.post("https://blooming_cartcom/signup",{
-    username:user.username,
-    firstname:user.firstname,
-    lastname:user.lastname,
+  let name=user.firstname+""+user.lastname
+  axios.post("https:localhost:8080/users/signup",{
+    name:name,
     email:user.email,
     password:user.password
   })

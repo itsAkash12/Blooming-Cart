@@ -27,7 +27,7 @@ import {
   } from '@chakra-ui/react'
 import { useState } from "react"
 
-import logo from "../assets/images/blooming_cart.jpg";
+import logo from "../assets/images/Blooming Cart.png";
 import {  useNavigate } from "react-router-dom";
 
 

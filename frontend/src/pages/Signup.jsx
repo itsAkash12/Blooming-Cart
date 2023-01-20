@@ -144,6 +144,7 @@ const handleSubmit=(e)=>{
           </Stack>
         </Flex>
         <Flex flex={1}>
+        <Link onClick={()=>navigate("/")}>
           <Image
           backgroundColor={"#4b5f54"}
             alt={'Signup Image'}
@@ -156,6 +157,7 @@ const handleSubmit=(e)=>{
               signup_cover
             }
           />
+          </Link>
            
         </Flex>
       

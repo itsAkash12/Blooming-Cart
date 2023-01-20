@@ -14,19 +14,18 @@ import {
 } from "@chakra-ui/react";
 import { IoIosHeartEmpty, IoIosHeart } from "react-icons/io";
 import { useState, useEffect, useRef } from 'react';
-import Productdata from "./Productdata"
+
+import { useParams } from 'react-router-dom';
 
 import axios from "axios";
 import { useNavigate } from 'react-router';
 
 
 const Indvidual = () => {
+  const {url}=useParams();
   let navigate = useNavigate();
   const [data, setData] = useState([]);
-  const [modal, setModal] = useState(false);
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const initialRef = useRef(null)
-  const finalRef = useRef(null)
+
 
 
 
@@ -56,7 +55,7 @@ const Indvidual = () => {
   }
 
   useEffect(() => {
-    axios.get("http://localhost:8080/products?category=birthday")
+    axios.get(`http://localhost:8080/products?category=${url}`)
       .then((res) => setData(res.data))
       .catch((er) => console.log(er))
   }, [])

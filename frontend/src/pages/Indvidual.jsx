@@ -1,19 +1,9 @@
 import React from 'react'
 import {
-  Box, Text, Image, Button, Stack, Wrap, SimpleGrid,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  FormControl,
-  FormLabel,
-  Input,
-  ModalCloseButton, useDisclosure
+  Box, Text, Image, Button, Wrap, SimpleGrid,
 } from "@chakra-ui/react";
-import { IoIosHeartEmpty, IoIosHeart } from "react-icons/io";
-import { useState, useEffect, useRef } from 'react';
+import {IoIosHeart } from "react-icons/io";
+import { useState, useEffect } from 'react';
 
 import { useParams } from 'react-router-dom';
 
@@ -55,9 +45,15 @@ const Indvidual = () => {
   }
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/products?category=${params}`)
+    if(params){
+      axios.get(`http://localhost:8080/products?category=${params}`)
       .then((res) => setData(res.data))
       .catch((er) => console.log(er))
+    }else{
+      axios.get(`http://localhost:8080/products`)
+      .then((res) => setData(res.data))
+      .catch((er) => console.log(er))
+    }
   }, [params])
   console.log(data)
 

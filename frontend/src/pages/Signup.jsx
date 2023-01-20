@@ -52,17 +52,27 @@ setUser({...user,[name]:value})
 
 
 const handleSubmit=(e)=>{
+  if(user.password.length<8){
+    alert("Password must be of atleast 8 digit")
+    return
+  }
   e.preventDefault()
-  let name=user.firstname+""+user.lastname
-  axios.post("http://localhost:8080/users/signup",{
+
+  let name=user.firstname +""+ user.lastname
+  axios.post(`http://localhost:8080/users/signup`,{
     name:name,
     email:user.email,
     password:user.password
   })
   .then((response)=>{
- 
-    if(response.data.message==='Registered Successfully'){
+    
+  
+    if(response.data==='Signup Successfully'){
       navigate("/login")
+    }
+    if(response.data===`User with Email Id ${user.email} already exist`){
+
+      alert("User Already Exist")
     }
     if(response.data.error!==false) {
       changeError(response.data.error)
@@ -84,20 +94,20 @@ const handleSubmit=(e)=>{
             <Heading fontSize={'1.625rem'} fontWeight={"16px"} color={"black"}>Create Your Account</Heading>
           <form onSubmit={handleSubmit}>
             <FormControl >
-              <FormLabel fontSize={"14px"} color={"#777e85"}> First Name</FormLabel>
+              <FormLabel fontSize={"14px"} color={"#e7b270"}> First Name</FormLabel>
               <Input type="text" height={"34px"} placeholder={"Gaurav"} value={user.firstname} name="firstname" onChange={handleChange}/>
             </FormControl>
             <FormControl >
-              <FormLabel fontSize={"14px"} color={"#777e85"}> Last Name</FormLabel>
+              <FormLabel fontSize={"14px"} color={"#e7b270"}> Last Name</FormLabel>
               <Input type="text" height={"34px"} placeholder={"Sudhanshu"} value={user.lastname} name="lastname" onChange={handleChange}/>
             </FormControl>
             
             <FormControl >
-              <FormLabel fontSize={"14px"} color={"#777e85"}>Email </FormLabel>
+              <FormLabel fontSize={"14px"} color={"#e7b270"}>Email </FormLabel>
               <Input type="email"  height={"34px"}  placeholder="gs@gmail.com" value={user.email} name="email" onChange={handleChange}/>
             </FormControl>
             <FormControl >
-              <FormLabel fontSize={"14px"} color={"#777e85"}>Password</FormLabel>
+              <FormLabel fontSize={"14px"} color={"#e7b270"}>Password</FormLabel>
               <InputGroup>
               <Input type={(open===false)?"password":"text"} height={"34px"}  placeholder="Enter your password" value={user.password} name="password" onChange={handleChange}/>
             <InputRightElement><Box>{(open===false)? <AiOutlineEyeInvisible onClick={toggle} />:<AiOutlineEye onClick={toggle}/>}</Box></InputRightElement>  
@@ -134,6 +144,7 @@ const handleSubmit=(e)=>{
           </Stack>
         </Flex>
         <Flex flex={1}>
+        <Link onClick={()=>navigate("/")}>
           <Image
           backgroundColor={"#4b5f54"}
             alt={'Signup Image'}
@@ -146,6 +157,7 @@ const handleSubmit=(e)=>{
               signup_cover
             }
           />
+          </Link>
            
         </Flex>
       

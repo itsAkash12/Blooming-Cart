@@ -12,6 +12,7 @@ app.post("/signup",async(req,res)=>{
     const {name,email,password} = req.body;
     try{
        let existingUser = await Users.findOne({email})
+       console.log(existingUser)
        if(existingUser){
         res.send(`User with Email Id ${email} already exist`)
        }
@@ -45,8 +46,8 @@ app.post("/login",async(req,res)=>{
         bcrypt.compare(password, user.password, (err, result)=> {
             if(result){
                 let token = jwt.sign({id : user._id , role : user.role , email : user.email , name : user.name},key)
-                res.send({msg : "Login Success" , flowerToken : token })
-                
+                res.send({msg : "Login Success" , flowerToken : token , userData: {name : user.name , role : user.role , id : user.id } })
+                res.send({msg : "Login Success" , flowerToken : token , userData : {name : user.name , id : user._id , role : user.role} })                
             }else{
                 res.send("Wrong Credentials")
                 

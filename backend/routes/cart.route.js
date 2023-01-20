@@ -6,7 +6,7 @@ app.use(express.json())
 
 // Get All Data in Cart
 
-app.get("/",authenticator , async(req,res)=>{
+app.get("/" ,authenticator , async(req,res)=>{
     const {userID} = req.body
     try{
        let AllCartData = await Carts.find({userID:userID})
@@ -24,10 +24,10 @@ app.get("/",authenticator , async(req,res)=>{
 // Add Product in Cart
 
 app.post("/",authenticator,async(req,res)=>{
-    const {delivery_time ,category , image , product_name , price , strike_price , colors , rating , size , quantity,userID} = req.body
+    const {delivery_time ,category , image , productname , price , strike_price , size , quantity,userID} = req.body
     // console.log(req.body)
     try{
-     let addProductToCart = new Carts({delivery_time : delivery_time, category : category , image : image , product_name : product_name , price : price , strike_price : strike_price , colors : colors , rating : rating , size : size  , quantity : quantity,userID:userID})
+     let addProductToCart = new Carts({delivery_time : delivery_time, category : category , image : image , productname : productname , price : price , strike_price : strike_price ,  size : size  , quantity : quantity , userID:userID})
      await addProductToCart.save()
      res.send("Add Item To Cart")
     }catch(e){
@@ -80,6 +80,9 @@ app.patch("/:id",authenticator,async(req,res)=>{
         else{
             res.send("Item is not in cart")
         }
+    }
+    else{
+        res.send("You Are Not Authorize")
     }
 
   }catch(e){

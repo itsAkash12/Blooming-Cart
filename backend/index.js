@@ -9,6 +9,7 @@ const cartRoutes = require("./routes/cart.route")
 const port = process.env.port
 const cors = require("cors")
 const bcrypt = require('bcrypt');
+app.use(cors())
 app.use(express.json())
 app.use(cors())
 app.use("/users",userRoutes)

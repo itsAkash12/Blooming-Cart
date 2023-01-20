@@ -38,6 +38,8 @@ export default function AllRoutes() {
         <Route path="/admin/products" element={<Allproducts />} />
         <Route path="/admin/orders" element={<Order />} />
         <Route path="/admin/adding" element={<Adding />} />
+        <Route path="/ind" element={<Indvidual/>}></Route>
+        <Route path="/:id" element={<Productdata/>}></Route>
         <Route path="*" element={<h1>Page Not Found</h1>}></Route>
       </Routes>
       <Footer></Footer>

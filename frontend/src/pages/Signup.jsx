@@ -54,7 +54,7 @@ setUser({...user,[name]:value})
 const handleSubmit=(e)=>{
   e.preventDefault()
   let name=user.firstname+""+user.lastname
-  axios.post("https:localhost:8080/users/signup",{
+  axios.post("http://localhost:8080/users/signup",{
     name:name,
     email:user.email,
     password:user.password

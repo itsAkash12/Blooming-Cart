@@ -46,7 +46,7 @@ app.post("/login",async(req,res)=>{
         bcrypt.compare(password, user.password, (err, result)=> {
             if(result){
                 let token = jwt.sign({id : user._id , role : user.role , email : user.email , name : user.name},key)
-                res.send({msg : "Login Success" , flowerToken : token })
+                res.send({msg : "Login Success" , flowerToken : token , userData : {name : user.name , id : user._id , role : user.role} })
                 
             }else{
                 res.send("Wrong Credentials")

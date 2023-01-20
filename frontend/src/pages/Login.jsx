@@ -33,7 +33,9 @@ const Login = () => {
   };
 
   const handleNavigate = () => {
+
     navigate("/signup");
+
   };
 
   const handleSubmit = (e) => {

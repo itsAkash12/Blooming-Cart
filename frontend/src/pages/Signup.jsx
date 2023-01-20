@@ -57,6 +57,7 @@ const handleSubmit=(e)=>{
     return
   }
   e.preventDefault()
+
   let name=user.firstname +""+ user.lastname
   axios.post(`http://localhost:8080/users/signup`,{
     name:name,

@@ -16,6 +16,7 @@ import Productdata from "./Productdata"
 
 import axios from "axios";
 
+
 const Indvidual = () => {
   const [data,setData]=useState([]);
   const [modal, setModal] = useState(false);
@@ -39,7 +40,7 @@ const Indvidual = () => {
 
   useEffect(()=>{
     axios.get("http://localhost:8080/products?category=birthday")
-    .then((res)=>setData(res))
+    .then((res)=>setData(res.data))
     .catch((er)=>console.log(er))
   },[])
   console.log(data)

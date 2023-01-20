@@ -43,7 +43,7 @@ export const Categories_Data = [
   },
   {
     category:"BIRTHDAY",
-    url:"/birthday"
+    url:"/ind/birthday"
   },
   {
     category:"SYMPATHY",

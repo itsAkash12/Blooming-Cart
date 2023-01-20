@@ -33,7 +33,7 @@ export default function AllRoutes() {
         <Route path="/payment" element={<PaymentsPage />}></Route>
         <Route path="/delivery" element={<Delivery />}></Route>
         <Route path="/ind" element={<Indvidual />}></Route>
-        <Route path="/:params" element={<Indvidual />}></Route>
+        <Route path="/ind/:params" element={<Indvidual />}></Route>
         <Route path="/admin" element={<Dashboard />}></Route>
         <Route path="/admin/users" element={<Allusers></Allusers>} />
         <Route path="/admin/products" element={<Allproducts />} />

@@ -26,6 +26,7 @@ const WebNavbar = () => {
   const navigate = useNavigate();
   const [scrollTop, setScrollTop] = useState(0);
   let name = localStorage.getItem("userName");
+  let role = localStorage.getItem("role");
 
   const onScroll = () => {
     const winScroll = document.documentElement.scrollTop;
@@ -81,7 +82,14 @@ const WebNavbar = () => {
                 <PopoverArrow />
                 <PopoverCloseButton />
                 <PopoverHeader>Hello {name} !</PopoverHeader>
-                <PopoverBody>
+                <PopoverBody display={"grid"} gap="10px">
+                  {
+                    role === "Admin" ? <Button colorScheme="green"
+                    color={"white"}
+                    bg="#200589"
+                    size={"sm"}
+                    onClick={()=> navigate("/admin")} >Admin Panel</Button> : <Box></Box>
+                  }
                   <Button
                     size={"sm"}
                     colorScheme="green"

@@ -7,12 +7,13 @@ import {
 import logo from "../../assets/images/Blooming Cart.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faBars } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../styles/navbar.css";
 import DrawerJSX from "./DrawerJSX";
 const BG_COLOR = process.env.REACT_APP_BG_COLOR;
 
 const MobNavbar = () => {
+  const navigate = useNavigate();
   
   return (
     <Box className="mobile_nav_parent">
@@ -21,10 +22,10 @@ const MobNavbar = () => {
           <DrawerJSX />
         </Box>
         <Box className="mobile_nav_container_logo">
-          <Image w="29%" borderRadius="50%" src={logo} alt="logo" />
+          <Image w="29%" borderRadius="50%" src={logo} alt="logo" onClick={()=> navigate("/")} />
         </Box>
         <Box>
-          <Link>
+          <Link to="/cart">
             <FontAwesomeIcon color="white" size="xl" icon={faCartShopping} />
             <Text fontWeight="bold" color="white">
               Cart

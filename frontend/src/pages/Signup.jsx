@@ -50,13 +50,18 @@ const Signup = () => {
   };
 
   const handleSubmit = (e) => {
-    if (user.password.length < 8) {
-      alert("Password must be of atleast 8 digit");
-      return;
-    }
     e.preventDefault();
-
-    let name = user.firstname + "" + user.lastname;
+    if (user.password.length < 8) {
+      return toast({
+        title: "Error",
+        description: "Password should be more than 8 digits, Try Again",
+        status: "error",
+        position: "top",
+        duration: 2000,
+        isClosable: true,
+      });
+    }
+    let name = user.firstname;
     axios
       .post(`http://localhost:8080/users/signup`, {
         name: name,
@@ -148,7 +153,7 @@ const Signup = () => {
                   <Input
                     type="text"
                     height={"34px"}
-                    placeholder={"Gaurav"}
+                    placeholder="Enter your First Name"
                     value={user.firstname}
                     name="firstname"
                     onChange={handleChange}
@@ -162,7 +167,7 @@ const Signup = () => {
                   <Input
                     type="text"
                     height={"34px"}
-                    placeholder={"Sudhanshu"}
+                    placeholder="Enter your Last Name"
                     value={user.lastname}
                     name="lastname"
                     onChange={handleChange}
@@ -176,7 +181,7 @@ const Signup = () => {
                   <Input
                     type="email"
                     height={"34px"}
-                    placeholder="gs@gmail.com"
+                    placeholder="Enter your Email"
                     value={user.email}
                     name="email"
                     onChange={handleChange}

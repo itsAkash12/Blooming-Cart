@@ -45,7 +45,6 @@ const Allproducts = () => {
         method: "DELETE",
       });
       console.log("deleted sucessfully");
-      handleData();
       toast({
         title: "Deleted",
         description: "Successfully Deleted Product",
@@ -54,6 +53,7 @@ const Allproducts = () => {
         duration: 1000,
         isClosable: true,
       });
+      handleData();
     } catch (error) {
       console.log("error");
       toast({

@@ -1,39 +1,53 @@
-import React, { useState } from 'react';
-import './cart.css';
+// import React from 'react';
+// import { Formik, Form, Field } from 'formik';
+// import styled from 'styled-components';
+// import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 
-function PaymentsPage() {
-  // Use state to keep track of the payment details
-  const [cardNumber, setCardNumber] = useState('');
-  const [expiryDate, setExpiryDate] = useState('');
-  const [cvv, setCvv] = useState('');
+// const PaymentForm = () => {
+//   const stripe = useStripe();
+//   const elements = useElements();
 
-  // Function to handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Send the payment details to your server or payment gateway
-  }
+//   const handleSubmit = async (values) => {
+//     const { error, paymentMethod } = await stripe.createPaymentMethod({
+//       type: 'card',
+//       card: elements.getElement(CardElement),
+//     });
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <h1>Payments</h1>
-      <div className="form-group">
-        <label htmlFor="card-number">Card Number:</label>
-        <input className="form-control" type="text" id="card-number" onChange={e => setCardNumber(e.target.value)} />
-      </div>
+//     if (!error) {
+//       // Send the paymentMethod.id to your server to create a charge
+//     }
+//   };
 
-      <div className="form-group">
-        <label htmlFor="expiry-date">Expiry Date:</label>
-        <input className="form-control" type="text" id="expiry-date" onChange={e => setExpiryDate(e.target.value)} />
-      </div>
+//   return (
+//     <Formik
+//       initialValues={{
+//         name: '',
+//         email: '',
+//         amount: '',
+//       }}
+//       onSubmit={handleSubmit}
+//     >
+//       {({ isSubmitting }) => (
+//         <StyledForm>
+//           <Field name="name" placeholder="Name on Card" />
+//           <Field name="email" type="email" placeholder="Email" />
+//           <Field name="amount" type="number" placeholder="Amount" />
+//           <CardElement />
+//           <button type="submit" disabled={isSubmitting}>
+//             Pay
+//           </button>
+//         </StyledForm>
+//       )}
+//     </Formik>
+//   );
+// };
 
-      <div className="form-group">
-        <label htmlFor="cvv">CVV:</label>
-        <input className="form-control" type="text" id="cvv" onChange={e => setCvv(e.target.value)} />
-      </div>
-      
-      <button className="btn btn-primary" type="submit">Submit Payment</button>
-    </form>
-  );
-}
+// const StyledForm = styled(Form)`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   padding: 20px;
+//   border: 1px solid #ccc;
+// `;
 
-export default PaymentsPage;
+// export default PaymentForm;

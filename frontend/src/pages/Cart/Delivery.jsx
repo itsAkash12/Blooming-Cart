@@ -1,20 +1,48 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./cart.css"
 import { LockIcon } from '@chakra-ui/icons'
+// import { useDispatch, useSelector } from 'react-redux';
 import { Text, Stack } from '@chakra-ui/react'
+import {
+    Accordion,
+    AccordionItem,
+    AccordionButton,
+    AccordionPanel,
+    AccordionIcon,
+    Box
+} from '@chakra-ui/react'
+import { GetCart } from './GetCart'
+import { useDispatch, useSelector } from 'react-redux'
+import { getCart } from '../../redux/action'
 export const Delivery = () => {
+    const data = useSelector(store=> store.cart)
+
+const dispatch = useDispatch()
+
+useEffect(()=>{
+    dispatch(getCart())
+},[data.length])
+
+   
+    let total = 0
+    for(let i = 0; i < data.length;i++){
+
+        total = total + +(data[i].price)
+    }
+    // console.log(total)
+    console.log(data.length)
     return (
         <div className='maindel'>
             <div className='topbar'>
                 <div className='navbar'>
                     <Stack spacing={3} padding="10px" className='underline'>
-                        <Text fontSize='3xl' display={"flex"} gap="10px"><p className='numbers'>1</p> Delivery</Text>
+                        <Text fontSize='2xl' display={"flex"} gap="10px"><p className='numbers'>1</p> Delivery</Text>
                     </Stack>
                     <Stack spacing={3} padding="10px">
-                        <Text fontSize='3xl' display={"flex"} gap="10px"><p className='numbers'>2</p> Payment</Text>
+                        <Text fontSize='2xl' display={"flex"} gap="10px"><p className='numbers'>2</p> Payment</Text>
                     </Stack>
                     <Stack spacing={3} padding="10px">
-                        <Text fontSize='3xl' display={"flex"} gap="10px"><p className='numbers'>3</p> Review</Text>
+                        <Text fontSize='2xl' display={"flex"} gap="10px"><p className='numbers'>3</p> Review</Text>
                     </Stack>
                 </div>
                 <div>
@@ -30,8 +58,10 @@ export const Delivery = () => {
                         <Text fontSize='3xl' textAlign={"left"} padding="5px">Delivery Information</Text>
                     </div>
                     <div className='address'>
-                        <p>items 1 of 10 : </p>
-                        CART DATA 
+                        <div>
+                                <GetCart/> 
+                                
+                        </div>
                         <h2>Sending to </h2>
                         <input type="text" placeholder='Recipients First Name' />
                         <input type="text" placeholder='Recipients Last Name' />
@@ -343,7 +373,45 @@ export const Delivery = () => {
                         WELCOME DEVENDER
                     </div>
                     <div>
-                        order Summary
+                    <div className='orderSummary'>
+                    <h3>Order summary</h3>
+                    <div className='accordion'>
+                        <Accordion defaultIndex={[0]} allowMultiple>
+                            <AccordionItem>
+                                <h2>
+                                    <AccordionButton >
+                                        <Box as="span" flex='1' textAlign='left' border="none">
+                                            Expand
+                                        </Box>
+                                        <AccordionIcon />
+                                    </AccordionButton>
+                                </h2>
+                                <AccordionPanel pb={4}>
+                                    <div className='accordionDiv'>
+                                        <div>
+                                            <h1>Merchandise:</h1>
+                                            <h1>{total.toFixed(2)}</h1>
+                                        </div>
+                                        <div>
+                                            <h1>Estimated Shipping:*</h1>
+                                            <h1>$0.00</h1>
+                                        </div>
+                                        <div>
+                                            <h1>Total before tax:</h1>
+                                            <h1>{total.toFixed(2)}</h1>
+                                        </div>
+                                        <div>
+                                            <h1>Taxes:</h1>
+                                            <h1>$0.00</h1>
+                                        </div>
+
+                                    </div>
+                                </AccordionPanel>
+                            </AccordionItem>
+                        </Accordion>
+                    </div>
+
+                </div>
                     </div>
                 </div>
             </div>

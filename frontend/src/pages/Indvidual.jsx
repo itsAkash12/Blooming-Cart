@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  Box, Text, Image, Button, Wrap, SimpleGrid,
+  Box, Text, Image, Button, Wrap, SimpleGrid,useToast
 } from "@chakra-ui/react";
 import {IoIosHeart } from "react-icons/io";
 import { useState, useEffect } from 'react';
@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router';
 
 const Indvidual = () => {
   const {params}=useParams();
+  const toast = useToast();
   let navigate = useNavigate();
   const [data, setData] = useState([]);
 
@@ -33,7 +34,16 @@ const Indvidual = () => {
         'Authorization': auth
     }
     })
-    .then((res)=>console.log(res))
+    .then((res)=>console.log(res),
+    toast({
+      title: "Sucessfully",
+      description: "Item added to your Cart",
+      status: "success",
+      position: "top",
+      duration: 3000,
+      isClosable: true,
+    })
+    )
     .catch((er)=>console.log(er))
 
   }
@@ -45,7 +55,7 @@ const Indvidual = () => {
 
   useEffect(() => {
     if(params){
-      axios.get(`http://localhost:8080/products?category=${params}`)
+      axios.get(`http://localhost:8080/products?category=${params}&page=1`)
       .then((res) => setData(res.data))
       .catch((er) => console.log(er))
     }else{

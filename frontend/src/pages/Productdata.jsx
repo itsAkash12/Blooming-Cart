@@ -4,16 +4,18 @@ import Indvidual from './Indvidual';
 import axios from "axios";
 import { Box, Image, Text,Badge, Button, Center, 
   Circle, Divider, Flex, HStack, Spacer, Spinner,
-   Stack, useToast, VStack, Wrap  } from '@chakra-ui/react';
+   Stack, useToast, VStack, Wrap } from '@chakra-ui/react';
    import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons';
 import { useParams } from 'react-router-dom';
 import { BiShoppingBag  } from "react-icons/bi";
 import {IoIosHeart } from "react-icons/io";
 
 const Productdata = () => {
+  const toast = useToast();
   const { id } = useParams();
   console.log("param", id)
   const [data, setData] = useState([]);
+  
   const [count,setCount]=useState(1);
   const [DefaultImg, setImage] = useState();
 
@@ -31,8 +33,31 @@ const Productdata = () => {
 
  
 
-  const handleClick=()=>{
-    console.log("log")
+  const handleClick=(el)=>{
+    const post = {
+      image: el.image,
+      productname: el.productname,
+      price: el.price,
+      size: el.size,
+      category: el.category
+    }
+    //console.log("post",post)
+    axios.post("http://localhost:8080/carts/",post,{
+      headers: {
+        'Authorization': auth
+    }
+    })
+    .then((res)=>console.log(res),
+    toast({
+      title: data.productname,
+      description: "Item added to your Cart",
+      status: "success",
+      position: "top",
+      duration: 3000,
+      isClosable: true,
+    })
+    )
+    .catch((er)=>console.log(er))
   }
   
   return (
@@ -100,7 +125,7 @@ const Productdata = () => {
 
           <HStack w="full" paddingLeft={["5px","3px","1px"]}>
 
-            <Button _hover={{bg:"#92bcb5"}} onClick={() => handleClick()} fontSize="19px" padding={5} w="half" backgroundColor={process.env.REACT_APP_BG_COLOR}>
+            <Button _hover={{bg:"#92bcb5"}} onClick={() => handleClick(data)} fontSize="19px" padding={5} w="half" backgroundColor={process.env.REACT_APP_BG_COLOR}>
 
               <BiShoppingBag fontSize={{ base: "25px", sm: "25px", md: "3xl" }} />Add to Cart</Button>
 

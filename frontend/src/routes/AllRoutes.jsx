@@ -18,6 +18,7 @@ import Order from "../pages/AdminPages/Order";
 import Adding from "../pages/AdminPages/Adding";
 import Productdata from "../pages/Productdata";
 import PrivateRoute from "./PrivateRoute";
+import Loader from "../pages/Loader";
 
 export default function AllRoutes() {
   return (

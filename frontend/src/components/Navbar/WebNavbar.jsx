@@ -132,7 +132,7 @@ const WebNavbar = () => {
           </Link>
         </Box>
         <Box className="div_three_container_Avtar">
-          <Link to="/cart">
+          <Link to="/shoping">
             <Image src={cart} alt="cart" />
             <Text fontSize="12px" fontWeight="bold">
               Cart

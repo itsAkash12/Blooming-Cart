@@ -59,12 +59,12 @@ useEffect(()=>{
     
   ]);
 
-  // console.log(data)
-  if(data.length > 0){
-    return (
-      <ShopingCart/>
-    )
-  }
+  console.log(data)
+  // if(data.length > 0){
+  //   return (
+  //     <ShopingCart/>
+  //   )
+  // }
 
   return (
     <div>

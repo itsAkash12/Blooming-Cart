@@ -26,7 +26,7 @@ const getCart = () => (dispatch) => {
     return axios.get(`http://localhost:8080/carts`, {
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzY2E3NzMzYjIyMjlmMWM1YTAzZTRkNiIsInJvbGUiOiJFeHBsb3JlciIsImVtYWlsIjoic3JAZ21haWwuY29tIiwibmFtZSI6InJhaHVsIiwiaWF0IjoxNjc0MjEzMjA2fQ.BfAMpuadLZfdULOXvlXTDIyQPUL2dlg3DZmFB6-VypA"
+            "Authorization": token
         }
     })
         .then((r) => {

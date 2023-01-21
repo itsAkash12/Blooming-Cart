@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
 import React from "react";
 import Sidebar from "../../components/admin/Sidebar";
 import "../../styles/adminpages.css";
@@ -10,6 +10,9 @@ const Adding = () => {
         <Box>
           <Sidebar />
         </Box>
+      </Box>
+      <Box bg="#000000" m="20px auto">
+        <Heading p="10px 0px" color={"white"}>Dashboard</Heading>
       </Box>
     </Box>
   );

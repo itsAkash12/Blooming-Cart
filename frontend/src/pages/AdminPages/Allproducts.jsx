@@ -1,5 +1,6 @@
 import {
   Box,
+  Heading,
   Table,
   TableCaption,
   TableContainer,
@@ -11,13 +12,41 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../../components/admin/Sidebar";
 import "../../styles/adminpages.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTrash, faUserPen } from "@fortawesome/free-solid-svg-icons";
 
 const Allproducts = () => {
+  const [data, setData] = useState();
+
+  const handleData = async () => {
+    try {
+      let res = await fetch("http://localhost:8080/admin/products");
+      let result = await res.json();
+      setData(result);
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    handleData();
+  }, []);
+
+  const handleClick = async (id) => {
+    try {
+      let res = await fetch(`http://localhost:8080/admin/products/${id}`, {
+        method: "DELETE",
+      });
+      console.log("deleted sucessfully");
+      handleData();
+    } catch (error) {
+      console.log("error");
+    }
+  };
   return (
     <Box>
       <Box className="admin_parent">
@@ -26,8 +55,11 @@ const Allproducts = () => {
             <Sidebar />
           </Box>
           <Box className="allusers_container">
+            <Box  bg="#000000" m="20px auto">
+              <Heading p="10px 0px" color={"white"}>Product Page</Heading>
+            </Box>
             <TableContainer>
-              <Table variant="striped" colorScheme="purple">
+              <Table size="sm" variant="simple" colorScheme="purple">
                 <TableCaption>All the Users Data is Present Here</TableCaption>
                 <Thead colorScheme="red" fontWeight="bold">
                   <Tr>
@@ -38,24 +70,30 @@ const Allproducts = () => {
                     <Th color="Black">Actions</Th>
                   </Tr>
                 </Thead>
-                <Tbody textAlign="left">
-                  <Tr>
-                    <Td>23456181823456793456789</Td>
-                    <Td>Rose</Td>
-                    <Td>Valentine</Td>
-                    <Td>149</Td>
-                    <Td>
-                      <Box display="flex" gap="30px">
-                        <button>
-                          <FontAwesomeIcon icon={faPen} />
-                        </button>
-                        <button>
-                          <FontAwesomeIcon color="red" icon={faTrash} />
-                        </button>
-                      </Box>
-                    </Td>
-                  </Tr>
-                </Tbody>
+                {data &&
+                  data.map((el, i) => (
+                    <Tbody
+                      bg={i % 2 === 0 ? "white" : "#E9D8FD"}
+                      textAlign="left"
+                    >
+                      <Tr>
+                        <Td>{el._id}</Td>
+                        <Td>{el.productname}</Td>
+                        <Td>{el.category}</Td>
+                        <Td>{el.price}</Td>
+                        <Td>
+                          <Box display="flex" gap="30px">
+                            <button>
+                              <FontAwesomeIcon icon={faPen} />
+                            </button>
+                            <button onClick={() => handleClick(el._id)}>
+                              <FontAwesomeIcon color="red" icon={faTrash} />
+                            </button>
+                          </Box>
+                        </Td>
+                      </Tr>
+                    </Tbody>
+                  ))}
               </Table>
             </TableContainer>
           </Box>

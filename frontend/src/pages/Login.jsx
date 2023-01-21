@@ -50,6 +50,7 @@ const Login = () => {
         if (response.data.flowerToken) {
           localStorage.setItem("token", response.data.flowerToken);
           localStorage.setItem("userName", response.data.userData["name"]);
+          localStorage.setItem("role", response.data.userData["role"]);
           toast({
             title: "Welcome Back",
             description: "Successfully Logged In",

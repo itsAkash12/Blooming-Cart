@@ -7,7 +7,6 @@ import { useParams } from 'react-router-dom';
 
 const Productdata = () => {
   const {id}=useParams();
-  console.log("param",id)
     const [data,setData]=useState([]);
     useEffect(()=>{
         axios.get(`http://localhost:8080/products/${id}`,{
@@ -18,7 +17,6 @@ const Productdata = () => {
         .then((res)=>setData(res.data))
         .catch((er)=>console.log(er))
       },[])
-      console.log(data)
   return (
     <Box mb="100px">
         <Box w="90%"  margin="auto" gap="10%" marginTop="50px" display={"flex"}>

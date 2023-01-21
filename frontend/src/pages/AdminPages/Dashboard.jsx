@@ -62,10 +62,10 @@ const Dashboard = () => {
         data: [25, 54, 23, 87, product],
         backgroundColor: [
           "rgba(75,192,192,1)",
-          "#ecf0f1",
-          "#50AF95",
+          "#5F9DF7",
+          "#CA4E79",
           "#f3ba2f",
-          "#2a71d0",
+          "#FF6E31",
         ],
         borderColor: "black",
         borderWidth: 2,
@@ -80,6 +80,9 @@ const Dashboard = () => {
           <Sidebar />
         </Box>
         <Box>
+          <Box bg="#000000" m="20px auto">
+            <Heading p="10px 0px" color={"white"}>Dashboard</Heading>
+          </Box>
           <Box>
             <Box bg="twitter.500" className="detail1_container">
               <Text>Total Amount</Text>

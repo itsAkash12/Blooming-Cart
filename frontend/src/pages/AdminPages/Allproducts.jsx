@@ -1,5 +1,6 @@
 import {
   Box,
+  Heading,
   Table,
   TableCaption,
   TableContainer,
@@ -25,7 +26,7 @@ const Allproducts = () => {
       let res = await fetch("http://localhost:8080/admin/products");
       let result = await res.json();
       setData(result);
-      console.log(result)
+      console.log(result);
     } catch (error) {
       console.log(error);
     }
@@ -35,17 +36,17 @@ const Allproducts = () => {
     handleData();
   }, []);
 
-  const handleClick = async(id)=> {
+  const handleClick = async (id) => {
     try {
       let res = await fetch(`http://localhost:8080/admin/products/${id}`, {
-        method:"DELETE"
-      })
+        method: "DELETE",
+      });
       console.log("deleted sucessfully");
       handleData();
     } catch (error) {
       console.log("error");
     }
-  }
+  };
   return (
     <Box>
       <Box className="admin_parent">
@@ -54,8 +55,11 @@ const Allproducts = () => {
             <Sidebar />
           </Box>
           <Box className="allusers_container">
+            <Box  bg="#000000" m="20px auto">
+              <Heading p="10px 0px" color={"white"}>Product Page</Heading>
+            </Box>
             <TableContainer>
-              <Table size='sm' variant="simple" colorScheme="purple">
+              <Table size="sm" variant="simple" colorScheme="purple">
                 <TableCaption>All the Users Data is Present Here</TableCaption>
                 <Thead colorScheme="red" fontWeight="bold">
                   <Tr>
@@ -68,7 +72,10 @@ const Allproducts = () => {
                 </Thead>
                 {data &&
                   data.map((el, i) => (
-                    <Tbody bg={i %2 === 0 ? "white" : "#E9D8FD"} textAlign="left">
+                    <Tbody
+                      bg={i % 2 === 0 ? "white" : "#E9D8FD"}
+                      textAlign="left"
+                    >
                       <Tr>
                         <Td>{el._id}</Td>
                         <Td>{el.productname}</Td>
@@ -79,7 +86,7 @@ const Allproducts = () => {
                             <button>
                               <FontAwesomeIcon icon={faPen} />
                             </button>
-                            <button onClick={()=> handleClick(el._id)}>
+                            <button onClick={() => handleClick(el._id)}>
                               <FontAwesomeIcon color="red" icon={faTrash} />
                             </button>
                           </Box>

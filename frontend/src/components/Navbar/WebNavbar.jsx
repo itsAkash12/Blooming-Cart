@@ -1,5 +1,17 @@
 import React from "react";
-import { Box, Image, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Image,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverHeader,
+  PopoverTrigger,
+  Text,
+} from "@chakra-ui/react";
 import "../../styles/navbar.css";
 import logo from "../../assets/images/Blooming Cart.png";
 import avatar from "../../assets/images/icons8-customer.gif";
@@ -8,8 +20,10 @@ import orders from "../../assets/images/icons8-truck.gif";
 import { Categories_Data } from "../../assets/Data";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const WebNavbar = () => {
+  const navigate = useNavigate();
   const [scrollTop, setScrollTop] = useState(0);
   let name = localStorage.getItem("userName");
 
@@ -24,6 +38,11 @@ const WebNavbar = () => {
   useEffect(() => {
     window.addEventListener("scroll", onScroll);
   }, []);
+
+  const handleLogout= ()=> {
+    localStorage.clear();
+    window.location.reload(false);
+  }
   return (
     <Box position="sticky" top="0" className="stickyNavbar">
       <Box className="div_three_container">
@@ -48,18 +67,61 @@ const WebNavbar = () => {
           />
         </Box>
         <Box className="div_three_container_Avtar">
-          <Link to="/login">
-            <Image src={avatar} alt="avatar" />
-            {name ? (
-              <Text fontSize="xs" fontWeight="bold">
-                {name}
-              </Text>
-            ) : (
-              <Text fontSize="xs" fontWeight="bold">
-                Login
-              </Text>
-            )}
-          </Link>
+          {name ? (
+            <Popover>
+              <PopoverTrigger>
+                <Box>
+                  <Image ml="10px" w="65%" src={avatar} alt="avatar" />
+                  <Text fontSize="xs" fontWeight="bold">
+                    {name}
+                  </Text>
+                </Box>
+              </PopoverTrigger>
+              <PopoverContent>
+                <PopoverArrow />
+                <PopoverCloseButton />
+                <PopoverHeader>Hello {name} !</PopoverHeader>
+                <PopoverBody>
+                  <Button
+                    size={"sm"}
+                    colorScheme="green"
+                    color={"white"}
+                    bg="#200589"
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </Button>
+                </PopoverBody>
+              </PopoverContent>
+            </Popover>
+          ) : (
+            <Popover>
+              <PopoverTrigger>
+                <Box>
+                  <Image ml="10px" w="65%" src={avatar} alt="avatar" />
+                  <Text fontSize="xs" fontWeight="bold">
+                    Login
+                  </Text>
+                </Box>
+              </PopoverTrigger>
+              <PopoverContent>
+                <PopoverArrow />
+                <PopoverCloseButton />
+                <PopoverHeader>Hello Guest!</PopoverHeader>
+                <PopoverBody>
+                  <Button
+                    size={"sm"}
+                    colorScheme="green"
+                    color={"white"}
+                    bg="#200589"
+                    onClick={() => navigate("/login")}
+                  >
+                    Login
+                  </Button>
+                </PopoverBody>
+              </PopoverContent>
+            </Popover>
+          )}
         </Box>
         <Box className="div_three_container_Avtar">
           <Link>

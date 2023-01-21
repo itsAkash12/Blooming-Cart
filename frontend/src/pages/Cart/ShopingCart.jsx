@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "./cart.css"
 
-import {  DeleteIcon} from '@chakra-ui/icons'
+import { DeleteIcon } from '@chakra-ui/icons'
 
 
 import {
@@ -22,29 +22,29 @@ export const ShopingCart = () => {
     const navigate = useNavigate()
 
 
-    
+
     useEffect(() => {
         axios.get("http://localhost:8080/carts").then(res => console.log(res.data)).catch(err => console.log("err"))
     }, [])
 
 
-    const data = useSelector(store=> store.cart)
+    const data = useSelector(store => store.cart)
 
     const dispatch = useDispatch()
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(getCart())
-    },[data.length])
+    }, [data.length])
 
     let total = 0
-    for(let i = 0; i < data.length;i++){
+    for (let i = 0; i < data.length; i++) {
 
         total = total + +(data[i].price)
     }
     console.log(total)
-    
-   console.log("abc")
-    const navigateToDel = ()=>{
+
+    console.log("abc")
+    const navigateToDel = () => {
         navigate("/delivery")
     }
     return (
@@ -57,58 +57,10 @@ export const ShopingCart = () => {
             </div>
             <div>
                 {
-
                     data.length > 0 && <GetCart />
                 }
-                </div>
-                <div>
-
-
-                    cartItems.length > 0 && cartItems.map((ele) => (
-                        <div className='productCard productsdiv'>
-                            <h1>Item {ele.id} of {cartItems.length}:</h1>
-                            <hr />
-                            <div className='prodcart'>
-                                <img src={ele.image} alt="img" />
-                                <div className='productItem'>
-                                    <div>
-                                        <h4>{ele.name}</h4>
-                                        <h4>Sold By The Market</h4>
-                                        <h4>${ele.price}</h4>
-                                        <label>Oty</label>
-                                        <select onChange={handleChange}>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                        </select>
-                                        <h1>SubTotal : {ele.price * selectedValue}</h1>
-                                    </div>
-                                    <div>
-                                        <button className='buttonRemove' onClick={() => handleDelete(ele.id)}>
-                                            <DeleteIcon/>
-
-                                            <DeleteIcon />
-                                        </button>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-                    ))
-
-                }
-                
             </div>
             <div>
-
                 <div className='orderSummary'>
                     <h3>Order summary</h3>
                     <div className='accordion'>

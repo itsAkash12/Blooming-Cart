@@ -282,7 +282,7 @@
     background-color: #b026ff;
     color: white;
     border-radius: 100%;
-    width: 50px;
+    width: 40px;
 }
 
 .underline {
@@ -302,6 +302,7 @@
 .topbar {
     display: flex;
     justify-content: space-between;
+    border-bottom: 3px solid rgb(200, 200, 200);
 }
 
 .navbar {
@@ -355,4 +356,15 @@
     line-height: 22.88px;
     margin: 25px 0px;
     padding: 5px 10px 7px
+}
+
+.accordionDiv {
+    display: flex;
+    flex-direction: column;
+}
+
+.accordionDiv div{
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
 }

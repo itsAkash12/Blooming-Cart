@@ -11,6 +11,8 @@ import { useState, useEffect } from "react";
 
 const WebNavbar = () => {
   const [scrollTop, setScrollTop] = useState(0);
+  let name = localStorage.getItem("userName");
+
   const onScroll = () => {
     const winScroll = document.documentElement.scrollTop;
     const height =
@@ -26,7 +28,9 @@ const WebNavbar = () => {
     <Box position="sticky" top="0" className="stickyNavbar">
       <Box className="div_three_container">
         <Box className="div_three_container_logo">
-          <Link to="/"><Image src={logo} alt="logo_of_website" /></Link>
+          <Link to="/">
+            <Image src={logo} alt="logo_of_website" />
+          </Link>
         </Box>
         <Box className="div_three_container_input-group">
           <input
@@ -46,9 +50,15 @@ const WebNavbar = () => {
         <Box className="div_three_container_Avtar">
           <Link to="/login">
             <Image src={avatar} alt="avatar" />
-            <Text fontSize="xs" fontWeight="bold">
-              Login
-            </Text>
+            {name ? (
+              <Text fontSize="xs" fontWeight="bold">
+                {name}
+              </Text>
+            ) : (
+              <Text fontSize="xs" fontWeight="bold">
+                Login
+              </Text>
+            )}
           </Link>
         </Box>
         <Box className="div_three_container_Avtar">

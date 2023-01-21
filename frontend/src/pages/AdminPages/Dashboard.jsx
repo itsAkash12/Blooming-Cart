@@ -2,7 +2,7 @@ import { Box, Heading, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import Sidebar from "../../components/admin/Sidebar";
 import "../../styles/adminpages.css";
-import {Line, Doughnut} from "react-chartjs-2"
+
 
 const Dashboard = () => {
   const [user, setUser] = useState(0);

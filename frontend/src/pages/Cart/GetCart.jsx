@@ -8,6 +8,7 @@ import { deleteItem, getCart } from '../../redux/action';
 import CartPage from './Cart';
 
 export const GetCart = () => {
+    let token = localStorage.getItem("token")
 
     // const [cartItems, setCartItems] = useState(data);
     // let newData = data.data
@@ -55,7 +56,7 @@ export const GetCart = () => {
         axios.patch(`http://localhost:8080/carts`, {
             quantity: e.target.value,
             headers: {
-                'Authorization': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzY2E3NzMzYjIyMjlmMWM1YTAzZTRkNiIsInJvbGUiOiJFeHBsb3JlciIsImVtYWlsIjoic3JAZ21haWwuY29tIiwibmFtZSI6InJhaHVsIiwiaWF0IjoxNjc0MjEzMjA2fQ.BfAMpuadLZfdULOXvlXTDIyQPUL2dlg3DZmFB6-VypA"
+                'Authorization': token
 
             }
         }).then((res) => {
@@ -77,7 +78,7 @@ export const GetCart = () => {
 
     const deleteProduct = (id) => {
        setdummy(false)
-       let token = localStorage.getItem("token")
+       
         const response = axios.delete(`http://localhost:8080/carts/${id}`,{
             headers: {
                 "Content-Type": "application/json",

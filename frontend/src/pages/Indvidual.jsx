@@ -20,7 +20,7 @@ const Indvidual = () => {
 
   let auth=localStorage.getItem("token")
 
-  const handleCart = (el) => {
+  const handleCart = async(el) => {
     const post = {
       image: el.image,
       productname: el.productname,
@@ -29,22 +29,35 @@ const Indvidual = () => {
       category: el.category
     }
     //console.log("post",post)
-    axios.post("http://localhost:8080/carts/",post,{
-      headers: {
-        'Authorization': auth
+    try {
+      let res = await axios.post("http://localhost:8080/carts/",post,{
+        headers: {
+          'Authorization': auth
+      }
+      });
+      if(res.data=== "Token is Missing Please Login First"){
+        toast({
+          title: Error,
+          description: "Please Login First",
+          status: "error",
+          position: "top",
+          duration: 3000,
+          isClosable: true,
+        })
+      }else{
+        toast({
+          title: data.productname,
+          description: "Item added to your Cart",
+          status: "success",
+          position: "top",
+          duration: 3000,
+          isClosable: true,
+        })
+      }
+    } catch (error) {
+      
     }
-    })
-    .then((res)=>console.log(res),
-    toast({
-      title: "Sucessfully",
-      description: "Item added to your Cart",
-      status: "success",
-      position: "top",
-      duration: 3000,
-      isClosable: true,
-    })
-    )
-    .catch((er)=>console.log(er))
+    
 
   }
 

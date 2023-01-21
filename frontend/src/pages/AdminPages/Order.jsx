@@ -1,5 +1,6 @@
 import {
   Box,
+  Heading,
   Table,
   TableCaption,
   TableContainer,
@@ -25,6 +26,9 @@ const Order = () => {
           <Sidebar />
         </Box>
         <Box className="allusers_container">
+          <Box bg="#000000" m="20px auto">
+            <Heading p="10px 0px" color={"white"}>Orders Page</Heading>
+          </Box>
           <TableContainer>
             <Table variant="striped" colorScheme="purple">
               <TableCaption>All the Order Data is Present Here</TableCaption>

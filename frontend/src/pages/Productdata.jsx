@@ -34,6 +34,17 @@ const Productdata = () => {
   const handleClick=()=>{
     console.log("log")
   }
+  const {id}=useParams();
+    const [data,setData]=useState([]);
+    useEffect(()=>{
+        axios.get(`http://localhost:8080/products/${id}`,{
+          headers: {
+            'Authorization': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzY2E3NzMzYjIyMjlmMWM1YTAzZTRkNiIsInJvbGUiOiJFeHBsb3JlciIsImVtYWlsIjoic3JAZ21haWwuY29tIiwibmFtZSI6InJhaHVsIiwiaWF0IjoxNjc0MjEzMjA2fQ.BfAMpuadLZfdULOXvlXTDIyQPUL2dlg3DZmFB6-VypA"
+        }
+        })
+        .then((res)=>setData(res.data))
+        .catch((er)=>console.log(er))
+      },[])
   return (
     <Box m="auto">
       <Stack w={["98%","95%","97%"]} margin="auto" alignSelf="center" justifyContent="center" direction={{ base: "column", md: "row" }} spacing={{ base: 0, sm: 30 }} padding={5} justify="center" style={{ marginTop: "11px", marginBottom: "50px" }} >

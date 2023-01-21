@@ -39,23 +39,25 @@ app.post("/",authenticator,async(req,res)=>{
 
 app.delete("/:id", authenticator,async(req,res)=>{
     let id = req.params.id
-    
+    let logger_userID = req.body.userID;
+    console.log(logger_userID)
+
     try{
         let Product = await Carts.findById(id)
-    let logger_userID = req.body.userID;
-    let product_userID = Product.userID
-    // console.log(logger_userID,product_userID)
-    if(logger_userID === product_userID){
-        if(Product){
+   
+    if(Product){
+        let product_userID = Product.userID;
+        console.log(product_userID)
+        if(logger_userID === product_userID){
             let deleteProduct = await Carts.findByIdAndDelete(id)
             res.send("Remove Item from Cart")
         }
         else{
-            res.send("Already Removed from Cart,Please refresh the page")
+            res.send("You have Not authorize")
         }
     }
     else{
-        res.send("You Are Not Authorize")
+        res.send("Already deleted this item ,Please refresh page or Product does not exist")
     }
        
 

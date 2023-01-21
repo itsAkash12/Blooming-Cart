@@ -17,6 +17,8 @@ import Allproducts from "../pages/AdminPages/Allproducts";
 import Order from "../pages/AdminPages/Order";
 import Adding from "../pages/AdminPages/Adding";
 import Productdata from "../pages/Productdata";
+import PrivateRoute from "./PrivateRoute";
+import Loader from "../pages/Loader";
 
 export default function AllRoutes() {
   return (
@@ -34,11 +36,11 @@ export default function AllRoutes() {
         <Route path="/delivery" element={<Delivery />}></Route>
         <Route path="/ind" element={<Indvidual />}></Route>
         <Route path="/ind/:params" element={<Indvidual />}></Route>
-        <Route path="/admin" element={<Dashboard />}></Route>
-        <Route path="/admin/users" element={<Allusers></Allusers>} />
-        <Route path="/admin/products" element={<Allproducts />} />
-        <Route path="/admin/orders" element={<Order />} />
-        <Route path="/admin/adding" element={<Adding />} />
+        <Route path="/admin" element={ <PrivateRoute><Dashboard /></PrivateRoute> }></Route>
+        <Route path="/admin/users" element={<PrivateRoute><Allusers /></PrivateRoute>} />
+        <Route path="/admin/products" element={<PrivateRoute><Allproducts /></PrivateRoute>} />
+        <Route path="/admin/orders" element={<PrivateRoute><Order /></PrivateRoute>} />
+        <Route path="/admin/adding" element={<PrivateRoute><Adding /></PrivateRoute>} />
         <Route path="/ind" element={<Indvidual/>}></Route>
         <Route path="/:id" element={<Productdata/>}></Route>
         <Route path="*" element={<h1>Page Not Found</h1>}></Route>

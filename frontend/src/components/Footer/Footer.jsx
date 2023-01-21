@@ -6,7 +6,7 @@ import Blooming_Cart from "../../assets/images/Blooming Cart.png"
 
 function Footer() {
     return (
-        <Box mt="100px" className="footer_container">
+        <Box className="footer_container">
             <hr className="footerHr" />
             <Box className="footer">
                 <Box className="footer_flex">

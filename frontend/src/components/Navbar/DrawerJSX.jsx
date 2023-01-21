@@ -48,7 +48,7 @@ const DrawerJSX = () => {
             </Box>
             {Categories_Data.map((el) => (
               <Box key={el.category} p="10px" display="flex" justifyContent="space-between">
-                <Link>
+                <Link to={el.url}>
                   <Text fontWeight="500">{el.category}</Text>
                 </Link>
                 <Text fontWeight="bold">{">"}</Text>
@@ -59,9 +59,9 @@ const DrawerJSX = () => {
                 SHOP LAST MINUTES DEALS
               </Button>
               <Box textAlign="left">
-                <Link>
+                <Link to="/login">
                   <Heading p="10px 5px" size="sm">
-                    Customer Services
+                    Login
                   </Heading>
                 </Link>
                 <Link>

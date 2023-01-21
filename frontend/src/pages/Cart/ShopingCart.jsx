@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import "./cart.css"
 
+import {  DeleteIcon} from '@chakra-ui/icons'
+
+
 import {
     Accordion,
     AccordionItem,
@@ -17,6 +20,12 @@ import { getCart } from '../../redux/action';
 export const ShopingCart = () => {
     const [expnad, setExpand] = useState(false);
     const navigate = useNavigate()
+
+
+    
+    useEffect(() => {
+        axios.get("http://localhost:8080/carts").then(res => console.log(res.data)).catch(err => console.log("err"))
+    }, [])
 
 
     const data = useSelector(store=> store.cart)
@@ -48,7 +57,53 @@ export const ShopingCart = () => {
             </div>
             <div>
                 {
+
                     data.length > 0 && <GetCart />
+                }
+                </div>
+                <div>
+
+
+                    cartItems.length > 0 && cartItems.map((ele) => (
+                        <div className='productCard productsdiv'>
+                            <h1>Item {ele.id} of {cartItems.length}:</h1>
+                            <hr />
+                            <div className='prodcart'>
+                                <img src={ele.image} alt="img" />
+                                <div className='productItem'>
+                                    <div>
+                                        <h4>{ele.name}</h4>
+                                        <h4>Sold By The Market</h4>
+                                        <h4>${ele.price}</h4>
+                                        <label>Oty</label>
+                                        <select onChange={handleChange}>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                        </select>
+                                        <h1>SubTotal : {ele.price * selectedValue}</h1>
+                                    </div>
+                                    <div>
+                                        <button className='buttonRemove' onClick={() => handleDelete(ele.id)}>
+                                            <DeleteIcon/>
+
+                                            <DeleteIcon />
+                                        </button>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    ))
+
                 }
                 
             </div>

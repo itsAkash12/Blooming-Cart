@@ -24,10 +24,10 @@ app.get("/" ,authenticator , async(req,res)=>{
 // Add Product in Cart
 
 app.post("/",authenticator,async(req,res)=>{
-    const {delivery_time ,category , image , productname , price , strike_price , size , quantity,userID} = req.body
+    const {category , image , productname , price , strike_price , size , quantity,userID} = req.body
     // console.log(req.body)
     try{
-     let addProductToCart = new Carts({delivery_time : delivery_time, category : category , image : image , productname : productname , price : price , strike_price : strike_price ,  size : size  , quantity : quantity , userID:userID})
+     let addProductToCart = new Carts({delivery_time:3 , category : category , image : image , productname : productname , price : price , strike_price : strike_price ,  size : size  , quantity : quantity , userID:userID})
      await addProductToCart.save()
      res.send("Add Item To Cart")
     }catch(e){
@@ -39,23 +39,25 @@ app.post("/",authenticator,async(req,res)=>{
 
 app.delete("/:id", authenticator,async(req,res)=>{
     let id = req.params.id
-    
+    let logger_userID = req.body.userID;
+    console.log(logger_userID)
+
     try{
         let Product = await Carts.findById(id)
-    let logger_userID = req.body.userID;
-    let product_userID = Product.userID
-    // console.log(logger_userID,product_userID)
-    if(logger_userID === product_userID){
-        if(Product){
+   
+    if(Product){
+        let product_userID = Product.userID;
+        console.log(product_userID)
+        if(logger_userID === product_userID){
             let deleteProduct = await Carts.findByIdAndDelete(id)
             res.send("Remove Item from Cart")
         }
         else{
-            res.send("Already Removed from Cart,Please refresh the page")
+            res.send("You have Not authorize")
         }
     }
     else{
-        res.send("You Are Not Authorize")
+        res.send("Already deleted this item ,Please refresh page or Product does not exist")
     }
        
 

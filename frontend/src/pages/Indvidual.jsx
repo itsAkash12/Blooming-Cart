@@ -49,7 +49,6 @@ const Indvidual = () => {
   }
 
   const handleshow = (id) => {
-    console.log(id)
     navigate(`/${id}`)
 
   }
@@ -65,7 +64,6 @@ const Indvidual = () => {
       .catch((er) => console.log(er))
     }
   }, [params])
-  console.log(data)
 
   return (
     <div style={{marginBottom:"100px"}}>

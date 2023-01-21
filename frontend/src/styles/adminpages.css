@@ -6,11 +6,10 @@
 
 .sidebar_container{
     width: 250px;
-    height: 550px;
-    background-color: #200589;
+    height: 900px;
+    background-color: black;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    padding-top:10px ;
 }
 
 .sidebar_child{
@@ -73,7 +72,4 @@
     font-size:22px;
     font-weight: 500;
     color: white;
-}
-.allusers_container{
-    /* background-color: red; */
 }

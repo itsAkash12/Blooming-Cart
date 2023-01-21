@@ -28,7 +28,7 @@ const Productdata = () => {
     })
       .then((res) => setData(res.data))
       .catch((er) => console.log(er))
-  }, [])
+  }, [id])
   console.log(data)
 
  
@@ -59,6 +59,7 @@ const Productdata = () => {
     )
     .catch((er)=>console.log(er))
   }
+  
   return (
     <Box m="auto">
       <Stack w={["98%","95%","97%"]} margin="auto" alignSelf="center" justifyContent="center" direction={{ base: "column", md: "row" }} spacing={{ base: 0, sm: 30 }} padding={5} justify="center" style={{ marginTop: "11px", marginBottom: "50px" }} >

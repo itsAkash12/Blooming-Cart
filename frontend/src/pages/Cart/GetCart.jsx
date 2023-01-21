@@ -5,6 +5,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { ShopingCart } from './ShopingCart';
 import { useSelector, useDispatch } from "react-redux"
 import { deleteItem, getCart } from '../../redux/action';
+import CartPage from './Cart';
 
 export const GetCart = () => {
 
@@ -76,10 +77,11 @@ export const GetCart = () => {
 
     const deleteProduct = (id) => {
        setdummy(false)
+       let token = localStorage.getItem("token")
         const response = axios.delete(`http://localhost:8080/carts/${id}`,{
             headers: {
                 "Content-Type": "application/json",
-                'Authorization': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzY2E3NzMzYjIyMjlmMWM1YTAzZTRkNiIsInJvbGUiOiJFeHBsb3JlciIsImVtYWlsIjoic3JAZ21haWwuY29tIiwibmFtZSI6InJhaHVsIiwiaWF0IjoxNjc0MjEzMjA2fQ.BfAMpuadLZfdULOXvlXTDIyQPUL2dlg3DZmFB6-VypA"
+                'Authorization': token
             }
         })
         
@@ -108,16 +110,18 @@ export const GetCart = () => {
 
     },[data1.length,dummy])
 
-if(data1.length===0){
-    navigate("/cart")
-    return
+    console.log(data1)
+if(data1.length===0 && typeof(data1)==="object"){
+    // typeof(data1)==="object" ?  <CartPage /> : <ShopingCart/>
+    
 }
+console.log("asc")
 
 
     return (
         <div>
             {
-                data1.length > 0 && data1.map((ele) => (
+                typeof(data1)==="object" && data1.map((ele) => (
                     <div className='productCard productsdiv' key={ele._id}>
                         <h1>Item {data1.indexOf(ele) + 1} of {data1.length}:</h1>
                         <hr />

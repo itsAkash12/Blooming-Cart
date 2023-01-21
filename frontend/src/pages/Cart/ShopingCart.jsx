@@ -17,15 +17,18 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { GetCart } from './GetCart';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCart } from '../../redux/action';
+import CartPage from './Cart';
+import { faL } from '@fortawesome/free-solid-svg-icons';
 export const ShopingCart = () => {
     const [expnad, setExpand] = useState(false);
     const navigate = useNavigate()
+    
+const [nav,setNav] = useState(false)
 
 
-
-    useEffect(() => {
-        axios.get("http://localhost:8080/carts").then(res => console.log(res.data)).catch(err => console.log("err"))
-    }, [])
+    // useEffect(() => {
+    //     axios.get("http://localhost:8080/carts").then(res => console.log(res.data)).catch(err => console.log("err"))
+    // }, [])
 
 
     const data = useSelector(store => store.cart)
@@ -34,6 +37,17 @@ export const ShopingCart = () => {
 
     useEffect(() => {
         dispatch(getCart())
+        // setNav(!nav)
+        
+        if(typeof(data)==="string"){
+            // window.location.reload(false)
+            // setExpand(true)
+            // setNav(!nav)
+        
+            navigate("/cart")
+            console.log("Hello")
+            return 
+        }
     }, [data.length])
 
     let total = 0
@@ -41,12 +55,24 @@ export const ShopingCart = () => {
 
         total = total + +(data[i].price)
     }
-    console.log(total)
+    console.log(typeof(data))
+   
 
     console.log("abc")
     const navigateToDel = () => {
         navigate("/delivery")
     }
+    
+// if(typeof(data)==="string"){
+//     // window.location.reload(false)
+//     // setExpand(true)
+//     // setNav(!nav)
+
+//     navigate("/cart")
+//     console.log("Hello")
+//     return 
+// }
+
     return (
         <div className='shopingcartmain1'>
             <div>
@@ -57,7 +83,7 @@ export const ShopingCart = () => {
             </div>
             <div>
                 {
-                    data.length > 0 && <GetCart />
+                    typeof(data)==="object" &&  <GetCart /> 
                 }
             </div>
             <div>

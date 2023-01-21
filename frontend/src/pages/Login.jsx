@@ -12,7 +12,7 @@ import {
   Image,
   Text,
   Box,
-  useToast
+  useToast,
 } from "@chakra-ui/react";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
@@ -35,9 +35,7 @@ const Login = () => {
   };
 
   const handleNavigate = () => {
-
     navigate("/signup");
-
   };
 
   const handleSubmit = (e) => {
@@ -48,9 +46,10 @@ const Login = () => {
         password: user.password,
       })
       .then((response) => {
-        console.log(response)
+        console.log(response);
         if (response.data.flowerToken) {
           localStorage.setItem("token", response.data.flowerToken);
+          localStorage.setItem("userName", response.data.userData["name"]);
           toast({
             title: "Welcome Back",
             description: "Successfully Logged In",
@@ -204,9 +203,18 @@ const Login = () => {
                   </Stack>
                   <Divider orientation={"horizontal"} colorScheme={"black"} />
                   <Flex justifyContent={"space-between"}>
-                <Text color={"#3070F0"} fontSize={"14px"}>Not Registered?</Text>
-               <Text cursor={'pointer'} onClick={handleNavigate} color={"#3070F0"} fontSize={"14px"}>Create Your Account</Text>
-              </Flex>
+                    <Text color={"#3070F0"} fontSize={"14px"}>
+                      Not Registered?
+                    </Text>
+                    <Text
+                      cursor={"pointer"}
+                      onClick={handleNavigate}
+                      color={"#3070F0"}
+                      fontSize={"14px"}
+                    >
+                      Create Your Account
+                    </Text>
+                  </Flex>
                 </Stack>
               </Stack>
             </Stack>

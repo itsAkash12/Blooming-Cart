@@ -9,7 +9,7 @@ import ReviewSection from "../components/landingPage/ReviewSection";
 
 export default function Homepage() {
   return (
-    <Box className="container">
+    <Box mb="100px" className="container">
       <TopSection></TopSection>
       <SearchSection />
       <CardSection

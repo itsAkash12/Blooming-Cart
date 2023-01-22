@@ -25,7 +25,7 @@ const MobNavbar = () => {
           <Image w="29%" borderRadius="50%" src={logo} alt="logo" onClick={()=> navigate("/")} />
         </Box>
         <Box>
-          <Link to="/cart">
+          <Link to="/shoping">
             <FontAwesomeIcon color="white" size="xl" icon={faCartShopping} />
             <Text fontWeight="bold" color="white">
               Cart

@@ -67,9 +67,12 @@ app.delete("/:id", authenticator,async(req,res)=>{
 })
 
 app.patch("/:id",authenticator,async(req,res)=>{
-    let id = req.params.id
+    const {id} = req.params
     const {quantity} = req.body
   try{
+    if(!id || !quantity ){
+        throw new Error(`id or quantity not exists!!`)
+    }
     let Product = await Carts.findById(id)
     let logger_userID = req.body.userID;
     let product_userID = Product.userID

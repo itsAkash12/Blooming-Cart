@@ -95,16 +95,16 @@ const handleSubmit=(e)=>{
           <form onSubmit={handleSubmit}>
             <FormControl >
               <FormLabel fontSize={"14px"} color={"#e7b270"}> First Name</FormLabel>
-              <Input type="text" height={"34px"} placeholder={"Gaurav"} value={user.firstname} name="firstname" onChange={handleChange}/>
+              <Input type="text" height={"34px"} placeholder={"Enter First Name"} value={user.firstname} name="firstname" onChange={handleChange}/>
             </FormControl>
             <FormControl >
               <FormLabel fontSize={"14px"} color={"#e7b270"}> Last Name</FormLabel>
-              <Input type="text" height={"34px"} placeholder={"Sudhanshu"} value={user.lastname} name="lastname" onChange={handleChange}/>
+              <Input type="text" height={"34px"} placeholder={"Enter Last Name"} value={user.lastname} name="lastname" onChange={handleChange}/>
             </FormControl>
             
             <FormControl >
               <FormLabel fontSize={"14px"} color={"#e7b270"}>Email </FormLabel>
-              <Input type="email"  height={"34px"}  placeholder="gs@gmail.com" value={user.email} name="email" onChange={handleChange}/>
+              <Input type="email"  height={"34px"}  placeholder="Enter Email" value={user.email} name="email" onChange={handleChange}/>
             </FormControl>
             <FormControl >
               <FormLabel fontSize={"14px"} color={"#e7b270"}>Password</FormLabel>

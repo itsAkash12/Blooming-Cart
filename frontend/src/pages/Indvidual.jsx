@@ -1,103 +1,123 @@
 import React from 'react'
-import { Box, Text, Image, Button, Stack ,Wrap,SimpleGrid,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  FormControl,
-  FormLabel,
-  Input,
-  ModalCloseButton, useDisclosure} from "@chakra-ui/react";
-import { IoIosHeartEmpty, IoIosHeart } from "react-icons/io";
-import { useState,useEffect, useRef } from 'react';
-import Productdata from "./Productdata"
+import {
+  Box, Text, Image, Button, Wrap, SimpleGrid,useToast
+} from "@chakra-ui/react";
+import {IoIosHeart } from "react-icons/io";
+import { useState, useEffect } from 'react';
+
+import { useParams } from 'react-router-dom';
 
 import axios from "axios";
+import { useNavigate } from 'react-router';
 
 
 const Indvidual = () => {
-  const [data,setData]=useState([]);
-  const [modal, setModal] = useState(false);
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const initialRef = useRef(null)
-  const finalRef = useRef(null)
+  const {params}=useParams();
+  const toast = useToast();
+  let navigate = useNavigate();
+  const [data, setData] = useState([]);
 
 
- 
-  const handleCart=(id)=>{
-    console.log(id)
+  let auth=localStorage.getItem("token")
 
-  }
-  const hanldeEdit = () => {
-    setModal(true)
-  }
-  const handleshow=(id)=>{
-    console.log(id)
+  const handleCart = async(el) => {
+    const post = {
+      image: el.image,
+      productname: el.productname,
+      price: el.price,
+      size: el.size,
+      category: el.category
+    }
+    //console.log("post",post)
+    try {
+      let res = await axios.post("http://localhost:8080/carts/",post,{
+        headers: {
+          'Authorization': auth
+      }
+      });
+      if(res.data=== "Token is Missing Please Login First"){
+        toast({
+          title: Error,
+          description: "Please Login First",
+          status: "error",
+          position: "top",
+          duration: 3000,
+          isClosable: true,
+        })
+      }else{
+        toast({
+          title: data.productname,
+          description: "Item added to your Cart",
+          status: "success",
+          position: "top",
+          duration: 3000,
+          isClosable: true,
+        })
+      }
+    } catch (error) {
+      
+    }
     
+
   }
 
-  useEffect(()=>{
-    axios.get("http://localhost:8080/products?category=birthday")
-    .then((res)=>setData(res.data))
-    .catch((er)=>console.log(er))
-  },[])
-  console.log(data)
-  
-  return (
-    <div>
-       <Text textAlign="center" fontSize="21px" textDecoration="underline 2px #088DF5" fontWeight="semibold" margin="15px">Individual item</Text>          
-            <Wrap justify="center">
-                <SimpleGrid w="90%" spacing={3} columns={[2, 4]} >
-                    {
-                       data && data.map((el)=>(
-                            <Box  key={el._id} w="100%" textAlign="center">
-                                <Box onClick={() => { onOpen(); hanldeEdit() }} cursor={"pointer"} w="75%" m="auto">
-                                <Image onClick={()=>handleshow(el._id)} w="100%" src={el.image}></Image>
-                                </Box> 
-                                <Box  fontSize={["15px","16px","16px"]}  fontWeight="semibold" h={["41px","46px","48px"]} overflow="hidden">
-                                <Text p="0px 7px" >{el.description}</Text>
-                                </Box>
-                                <Box w="39%" display={"flex"} gap="5px" margin="auto" alignItems="center" justifyContent="center">
-                                  <Text fontSize="17px">{el.ratings}</Text>
-                                    <Image w="100%" src="https://static.vecteezy.com/system/resources/previews/004/256/658/original/five-star-customer-product-ratings-review-flat-icons-for-apps-and-websites-illustration-of-five-golden-yellow-stars-in-a-row-isolated-in-a-white-background-concepts-for-ratings-customers-review-free-vector.jpg"></Image>
-                                    </Box>
-                                    <Box display="flex" alignItems="center" justifyContent="center">
-                                    <Text color="blue"  fontSize="17px">  ₹ {35} /-</Text>
-                                    <Text as="s" m="3px 4px" fontSize="14px"> ₹ {21*3}/-</Text>
-                                    </Box>
-                                <Box display="flex" m="auto" alignItems="center" justifyContent="center">
-                                
-                                <Button onClick={()=>handleCart(el.id)} backgroundColor={process.env.REACT_APP_BG_COLOR} mr="5px"  size='sm'>
-                                    Add to Cart
-                                </Button>
-                                <Button  color={process.env.REACT_APP_BG_COLOR} size='sm'>
-                                    <IoIosHeart size="24px" ></IoIosHeart>
-                                </Button>
-                                </Box>   
-                            </Box>
-                        ))
-                    } 
-                   <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Create your account</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody pb={6}>
-            
-          </ModalBody>
+  const handleshow = (id) => {
+    navigate(`/${id}`)
 
-          <ModalFooter>
-            <Button colorScheme='blue' mr={3}>
-              Save
-            </Button>
-            <Button onClick={onClose}>Cancel</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-                </SimpleGrid>
-            </Wrap>
+  }
+
+  useEffect(() => {
+    if(params){
+      axios.get(`http://localhost:8080/products?category=${params}&page=1`)
+      .then((res) => setData(res.data))
+      .catch((er) => console.log(er))
+    }else{
+      axios.get(`http://localhost:8080/products`)
+      .then((res) => setData(res.data))
+      .catch((er) => console.log(er))
+    }
+  }, [params])
+
+  return (
+    <div style={{marginBottom:"100px"}}>
+      <Box marginTop="2px" marginBottom="5px" bg="#F4F2F7 " justifyContent="center" paddingTop={["10px","15px","18px"]}  h={["30px","51px","65px"]}>
+        <Text color="#65388B" fontWeight="semibold" fontSize={["11px","14px","17px"]}>save upto 40% on top {params} | SHOP NOW ^</Text>
+      </Box>
+      {/* <Text textAlign="center" fontSize="21px" textDecoration="underline 2px #088DF5" fontWeight="semibold" margin="15px">{params}</Text> */}
+      <Wrap justify="center">
+        <SimpleGrid w="90%" gap="15px 2px" columns={[2, 4]} >
+          {
+            data && data.map((el) => (
+              <Box key={el._id} w="100%" textAlign="center">
+                <Box onClick={() => handleshow(el._id)} cursor={"pointer"} w="81%" m="auto">
+                  <Image w="100%" src={el.image}></Image>
+                </Box>
+                <Box fontSize={["15px", "16px", "16px"]} fontWeight="semibold" h={["41px", "46px", "48px"]} overflow="hidden">
+                  <Text p="3px 7px" >{el.productname}</Text>
+                </Box>
+                <Box w="39%" display={"flex"} gap="5px" margin="auto" alignItems="center" justifyContent="center">
+                  <Text fontSize="17px">{el.ratings}</Text>
+                  <Image w="100%" src="https://static.vecteezy.com/system/resources/previews/004/256/658/original/five-star-customer-product-ratings-review-flat-icons-for-apps-and-websites-illustration-of-five-golden-yellow-stars-in-a-row-isolated-in-a-white-background-concepts-for-ratings-customers-review-free-vector.jpg"></Image>
+                </Box>
+                <Box display="flex" alignItems="center" justifyContent="center">
+                  <Text color="teal" fontWeight="semibold" fontSize="17px">  $ {el.price} </Text>
+                  <Text as="s" m="3px 4px" fontSize="14px"> $ {Math.floor(el.strike_price * 5)}</Text>
+                </Box>
+                <Box display="flex" m="auto" alignItems="center" justifyContent="center">
+
+                  <Button _hover={{bg:"#92bcb5"}} onClick={() => handleCart(el)} backgroundColor={process.env.REACT_APP_BG_COLOR} mr="5px" size='sm'>
+                    Add to Cart
+                  </Button>
+                  <Button _hover={{bg:"#92bcb5"}} variant="outline" color={process.env.REACT_APP_BG_COLOR} size='sm'>
+                    <IoIosHeart size="24px" ></IoIosHeart>
+                  </Button>
+                </Box>
+              </Box>
+            ))
+          }
+
+        </SimpleGrid>
+      </Wrap>
     </div>
   )
 }

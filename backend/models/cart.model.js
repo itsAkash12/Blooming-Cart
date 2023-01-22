@@ -19,7 +19,7 @@ const cartSchema = new mongoose.Schema({
    strike_price : {type : Number},
    size : {type : String ,required : true},
    category:{type:String , required:true},
-   description:{type : String , required : true},
+   description:{type : String },
    multi_image:{type:Array},
    quantity : {type : Number , default : 1 , min : 1 , required : true},
    userID : {type : String , required : true}

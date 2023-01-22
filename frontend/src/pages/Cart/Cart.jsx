@@ -1,18 +1,47 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { getCart } from '../../redux/action';
 import "./cart.css"
 
 import {ShopingCart} from "./ShopingCart"
 
 function CartPage() {
-  const [items, setItems] = useState([]);
 
 const navigate = useNavigate()
+// const [data, setData] = useState([]);
 
 
 const handleNavigate = ()=>{
   navigate("/")
 }
+
+// const getData = ()=>{
+//   const variable = localStorage.getItem("token")
+//   axios.get("http://localhost:8080/carts",{
+//       headers: {
+//           'Authorization': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzY2E3NzMzYjIyMjlmMWM1YTAzZTRkNiIsInJvbGUiOiJFeHBsb3JlciIsImVtYWlsIjoic3JAZ21haWwuY29tIiwibmFtZSI6InJhaHVsIiwiaWF0IjoxNjc0MjEzMjA2fQ.BfAMpuadLZfdULOXvlXTDIyQPUL2dlg3DZmFB6-VypA"
+          
+//       }
+//   }).then((res) =>{
+//       setData(res.data)
+//       console.log(cartItems)
+//   }).catch(err => console.log("err"))
+// }
+
+// useEffect(()=>{
+//   getData()
+// },[])
+
+const data = useSelector(store=> store.cart)
+
+const dispatch = useDispatch()
+
+useEffect(()=>{
+    dispatch(getCart())
+},[data.length])
+
 
   const [cartItems, setCartItems] = useState([
     { id: 1,image : "https://cdn3.1800flowers.com/wcsstore/Flowers/images/catalog/191167xltoppicksnipex.jpg?height=456&width=418&sharpen=a0.5,r1,t1&quality=80&auto=webp&optimize={medium}", name: 'Floral Embrace', price: `$ ${49.99}- $ ${79.99}` },
@@ -30,33 +59,28 @@ const handleNavigate = ()=>{
     
   ]);
 
-
-
-//   const addToCart = (item) => {
-//     setItems([...items, item]);
-//   }
-
-//   const removeFromCart = (item) => {
-//     setItems(items.filter((i) => i !== item));
-//   }
+  console.log(data)
+  // if(data.length > 0){
+  //   return (
+  //     <ShopingCart/>
+  //   )
+  // }
 
   return (
     <div>
 
     <div className='maindivEmtyCartDataBelow1'>
       <div>
-        {
-            items.length > 0 ? <ShopingCart/>: <h4>Your cart is empty</h4>
-        }
+             <h4>Your cart is empty</h4>
       </div>
       <div className='empty'></div>
       {
-        items.length === 0 && <div>
+        <div>
           <div >
             <h2>Best Sellers</h2>
             <div className='maindivEmtyCartDataBelow'>
               {
-                  cartItems.map((ele)=>(
+                  cartItems.length>0 && cartItems.map((ele)=>(
                       <div key={ele.id} className="emtyCartDataBelow">
                           <img className='image' src={ele.image} alt="flower" />
                           <h1 className='name'>{ele.name}</h1>

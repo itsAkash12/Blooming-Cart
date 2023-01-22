@@ -46,14 +46,14 @@ app.post("/login",async(req,res)=>{
         bcrypt.compare(password, user.password, (err, result)=> {
             if(result){
                 let token = jwt.sign({id : user._id , role : user.role , email : user.email , name : user.name},key)
-                res.send({msg : "Login Success" , flowerToken : token })
-                
+                res.send({msg : "Login Success" , flowerToken : token , userData: {name : user.name , role : user.role , id : user.id } })
             }else{
                 res.send("Wrong Credentials")
                 
             }
         });
-    }else{
+    }
+    else{
         res.send(`User does not exist with Email Id ${email}`)
     }
 

@@ -34,6 +34,14 @@ const [nav,setNav] = useState(false)
     const data = useSelector(store => store.cart)
 
     const dispatch = useDispatch()
+    let total = 0
+    for (let i = 0; i < data.length; i++) {
+        let newPrice = +(data[i].quantity) * +(data[i].price)
+        total = total + newPrice
+        console.log(newPrice,total)
+    }
+    console.log(typeof(data))
+   
 
     useEffect(() => {
         dispatch(getCart())
@@ -48,14 +56,8 @@ const [nav,setNav] = useState(false)
             console.log("Hello")
             return 
         }
-    }, [data.length])
+    }, [data.length,total])
 
-    let total = 0
-    for (let i = 0; i < data.length; i++) {
-
-        total = total + +(data[i].price)
-    }
-    console.log(typeof(data))
    
 
     console.log("abc")
@@ -104,7 +106,7 @@ const [nav,setNav] = useState(false)
                                     <div className='accordionDiv'>
                                         <div>
                                             <h1>Merchandise:</h1>
-                                            <h1>{total.toFixed(2)}</h1>
+                                            <h1>${total.toFixed(2)}</h1>
                                         </div>
                                         <div>
                                             <h1>Estimated Shipping:*</h1>
@@ -112,7 +114,7 @@ const [nav,setNav] = useState(false)
                                         </div>
                                         <div>
                                             <h1>Total before tax:</h1>
-                                            <h1>{total.toFixed(2)}</h1>
+                                            <h1>${total.toFixed(2)}</h1>
                                         </div>
                                         <div>
                                             <h1>Taxes:</h1>

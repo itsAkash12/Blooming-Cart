@@ -123,6 +123,19 @@
     margin-top: 100px;
 }
 
+@media (max-width: 1200px) {
+    .shopingcartmain1 {
+        width: 100%;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        gap: 10px;
+        /* border: 1px solid; */
+        margin-top: 100px;
+    }
+}
+
 .shopCart {
     color: #000000;
     font-family: Helvetica;
@@ -142,8 +155,23 @@
     flex-wrap: wrap;
     line-height: 22.88px;
     margin: 0px 0px 30px;
-    padding: 15px 20px 10px
+    padding: 15px 20px 10px;
+    
 }
+
+@media (max-width: 800px){
+    .productsdiv{
+        width: 80%;
+    }
+}
+
+@media (max-width: 600px){
+    .productsdiv{
+        width: 60%;
+    }
+}
+
+
 
 /* .shopingcartmain1>div {
     /* border: 1px solid; */
@@ -195,6 +223,15 @@
     text-align: left;
     gap: 10px;
 
+}
+@media (max-width: 800px){
+    .prodcart {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        gap: 10px;
+    
+    }
 }
 
 .buttonRemove :hover {
@@ -315,6 +352,14 @@
     display: flex;
     gap: 40px;
 }
+@media (max-width: 1100px) {
+    .delInfo {
+        width: 100%;
+    margin: auto;
+    display: flex;
+    gap: 40px;
+    }
+}
 .delInfo > div{
     width: 50%;
     /* padding: 10px; */
@@ -348,6 +393,11 @@
     margin-top: 8px;
     /* width: 100%; */
 }
+.inputtags{
+    display: flex;
+    flex-direction: column;
+
+}
 .inputtags input{
     border: 1px solid grey;
     padding: 5px;
@@ -363,9 +413,19 @@
     justify-content: space-between;
     
 }
+
 .method div{
     border: 1px solid black;
     padding: 8px;
+}
+
+@media (max-width: 700px){
+    .method{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+    }
+
 }
 .nameOfUser {
     background-color: #ffffff;
@@ -390,4 +450,18 @@
     display: flex;
     justify-content: space-between;
     gap: 50px;
+}
+
+@media (max-width: 800px){
+    .inputtags input{
+        width: 80%;
+    }
+
+}
+
+@media (max-width: 700px){
+    .inputtags input{
+        width: 50%;
+    }
+
 }

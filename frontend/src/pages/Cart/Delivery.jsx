@@ -50,9 +50,6 @@ export const Delivery = () => {
                     <Stack spacing={3} padding="10px">
                         <Text fontSize='2xl' display={"flex"} gap="10px"><p className='numbers'>2</p> Payment</Text>
                     </Stack>
-                    <Stack spacing={3} padding="10px">
-                        <Text fontSize='2xl' display={"flex"} gap="10px"><p className='numbers'>3</p> Review</Text>
-                    </Stack>
                 </div>
                 <div>
                     <LockIcon />

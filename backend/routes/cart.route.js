@@ -74,10 +74,7 @@ app.patch("/:id", authenticator, async (req, res) => {
         if (!id || !quantity) {
             throw new Error(`id or quantity not exists!!`)
         }
-        const Product = await Carts.find({
-            _id: id,
-            userID
-        })
+        const Product = await Carts.findById(id)
         if (Product) {
             await Carts.findByIdAndUpdate(id, { quantity: quantity }, { new: true })
             return res.send("Item is updated in cart")

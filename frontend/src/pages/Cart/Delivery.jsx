@@ -14,6 +14,7 @@ import {
 import { GetCart } from './GetCart'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCart } from '../../redux/action'
+import { ShopingCart } from './ShopingCart'
 export const Delivery = () => {
     const data = useSelector(store=> store.cart)
 
@@ -24,13 +25,15 @@ useEffect(()=>{
 },[data.length])
 
    
-    let total = 0
-    for(let i = 0; i < data.length;i++){
+let total = 0
+for (let i = 0; i < data.length; i++) {
+    let newPrice = +(data[i].quantity) * +(data[i].price)
+    total = total + newPrice
+    console.log(newPrice,total)
+}
+console.log(typeof(data))
 
-        total = total + +(data[i].price)
-    }
-    // console.log(total)
-    console.log(data.length)
+
     return (
         <div className='maindel'>
             <div className='topbar'>

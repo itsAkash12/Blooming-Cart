@@ -36,7 +36,7 @@ const getCart = () => (dispatch) => {
         })
 }
 
-const deleteItem = async(id) => {
+const deleteItem = async (id) => {
 
     try {
         await axios.delete(`http://localhost:8080/carts/${id}`, {

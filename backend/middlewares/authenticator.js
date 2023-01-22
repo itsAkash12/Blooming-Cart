@@ -4,6 +4,7 @@ const key = process.env.key
 const authenticator = async(req,res,next)=>{
     // res.send("hi")
     let token = req.headers.authorization
+    console.log({token});
     // res.send(token)
     if(!token){
         res.send("Token is Missing Please Login First")

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import "./cart.css"
 import { LockIcon } from '@chakra-ui/icons'
 // import { useDispatch, useSelector } from 'react-redux';
-import { Text, Stack } from '@chakra-ui/react'
+import { Text, Stack, useToast } from '@chakra-ui/react'
 import {
   Accordion,
   AccordionItem,
@@ -13,10 +13,12 @@ import {
 } from '@chakra-ui/react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCart } from '../../redux/action'
+import { useNavigate } from 'react-router-dom'
 
 export const PaymentsPage = () => {
   const data = useSelector(store => store.cart)
-
+  const toast = useToast()
+const navigate = useNavigate()
   const dispatch = useDispatch()
   let name = localStorage.getItem("userName")
   name = name.toUpperCase()
@@ -24,6 +26,20 @@ export const PaymentsPage = () => {
     dispatch(getCart())
   }, [data.length])
 
+  const orderPlaced = ()=>{
+    toast({
+      title: "Order Placed",
+      description: " Order Placed Successfully",
+      status: "success",
+      position: "top",
+      duration: 3000,
+      isClosable: true,
+    });
+
+
+    navigate("/")
+
+  }
 
   let total = 0
   for (let i = 0; i < data.length; i++) {
@@ -380,12 +396,11 @@ export const PaymentsPage = () => {
                 </div>
                 <div>
                   <h1>Contact Info:</h1>
-                  <h1>Your email address:yadavdy1@gmail.com</h1>
                   <input type="number" name="" id="" placeholder='YOUR PHONE NUMBER'/>
                 </div>
               </div>
             </div>
-            <button className='continueShoppingButton'>CONTINUE TO REVIEW ORDER</button>
+            <button className='continueShoppingButton' onClick={orderPlaced}>ORDER PLACED</button>
           </div>
         </div>
         <div className='secondDiv'>

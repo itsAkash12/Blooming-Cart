@@ -17,8 +17,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { GetCart } from './GetCart';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCart } from '../../redux/action';
-import CartPage from './Cart';
-import { faL } from '@fortawesome/free-solid-svg-icons';
+
 export const ShopingCart = () => {
     const [expnad, setExpand] = useState(false);
     const navigate = useNavigate()
@@ -125,6 +124,10 @@ const [nav,setNav] = useState(false)
                                 </AccordionPanel>
                             </AccordionItem>
                         </Accordion>
+                    </div>
+                    <div style={{display:"flex", justifyContent:"space-between"}}>
+                        <h1><b>Order Total </b></h1>
+                        <h1><b>{total.toFixed(2)}</b></h1>
                     </div>
 
                 </div>

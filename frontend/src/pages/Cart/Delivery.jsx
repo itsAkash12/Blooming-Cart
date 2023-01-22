@@ -15,23 +15,29 @@ import { GetCart } from './GetCart'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCart } from '../../redux/action'
 import { ShopingCart } from './ShopingCart'
+import { useNavigate } from 'react-router-dom'
 export const Delivery = () => {
-    const data = useSelector(store=> store.cart)
+    const data = useSelector(store => store.cart)
 
-const dispatch = useDispatch()
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
-useEffect(()=>{
-    dispatch(getCart())
-},[data.length])
+    useEffect(() => {
+        dispatch(getCart())
+    }, [data.length])
 
-   
-let total = 0
-for (let i = 0; i < data.length; i++) {
-    let newPrice = +(data[i].quantity) * +(data[i].price)
-    total = total + newPrice
-    console.log(newPrice,total)
-}
-console.log(typeof(data))
+    let name = localStorage.getItem("userName")
+    name = name.toUpperCase()
+    let total = 0
+    for (let i = 0; i < data.length; i++) {
+        let newPrice = +(data[i].quantity) * +(data[i].price)
+        total = total + newPrice
+        console.log(newPrice, total)
+    }
+    console.log(typeof (data))
+    const handleNavTOPayments = ()=>{
+        navigate("/payment")
+    }
 
 
     return (
@@ -62,8 +68,8 @@ console.log(typeof(data))
                     </div>
                     <div className='address'>
                         <div>
-                                <GetCart/> 
-                                
+                            <GetCart />
+
                         </div>
                         <h2>Sending to </h2>
                         <input type="text" placeholder='Recipients First Name' />
@@ -368,53 +374,56 @@ console.log(typeof(data))
                             </select>
                         </div>
                         <input type="text" placeholder='Recipient Phone Number' />
-                        <button className='continueShoppingButton'>Save Address To Continue</button>
+                        <button className='continueShoppingButton' onClick={handleNavTOPayments}>Save Address To Continue</button>
                     </div>
                 </div>
                 <div className='secondDiv'>
                     <div className='nameOfUser'>
-                        WELCOME DEVENDER
+                        WELCOME {name}
                     </div>
                     <div>
-                    <div className='orderSummary'>
-                    <h3>Order summary</h3>
-                    <div className='accordion'>
-                        <Accordion defaultIndex={[0]} allowMultiple>
-                            <AccordionItem>
-                                <h2>
-                                    <AccordionButton >
-                                        <Box as="span" flex='1' textAlign='left' border="none">
-                                            Expand
-                                        </Box>
-                                        <AccordionIcon />
-                                    </AccordionButton>
-                                </h2>
-                                <AccordionPanel pb={4}>
-                                    <div className='accordionDiv'>
-                                        <div>
-                                            <h1>Merchandise:</h1>
-                                            <h1>{total.toFixed(2)}</h1>
-                                        </div>
-                                        <div>
-                                            <h1>Estimated Shipping:*</h1>
-                                            <h1>$0.00</h1>
-                                        </div>
-                                        <div>
-                                            <h1>Total before tax:</h1>
-                                            <h1>{total.toFixed(2)}</h1>
-                                        </div>
-                                        <div>
-                                            <h1>Taxes:</h1>
-                                            <h1>$0.00</h1>
-                                        </div>
+                        <div className='orderSummary'>
+                            <h3>Order summary</h3>
+                            <div className='accordion'>
+                                <Accordion defaultIndex={[0]} allowMultiple>
+                                    <AccordionItem>
+                                        <h2>
+                                            <AccordionButton >
+                                                <Box as="span" flex='1' textAlign='left' border="none">
+                                                    Expand
+                                                </Box>
+                                                <AccordionIcon />
+                                            </AccordionButton>
+                                        </h2>
+                                        <AccordionPanel pb={4}>
+                                            <div className='accordionDiv'>
+                                                <div>
+                                                    <h1>Merchandise:</h1>
+                                                    <h1>{total.toFixed(2)}</h1>
+                                                </div>
+                                                <div>
+                                                    <h1>Estimated Shipping:*</h1>
+                                                    <h1>$0.00</h1>
+                                                </div>
+                                                <div>
+                                                    <h1>Total before tax:</h1>
+                                                    <h1>{total.toFixed(2)}</h1>
+                                                </div>
+                                                <div>
+                                                    <h1>Taxes:</h1>
+                                                    <h1>$0.00</h1>
+                                                </div>
 
-                                    </div>
-                                </AccordionPanel>
-                            </AccordionItem>
-                        </Accordion>
-                    </div>
-
-                </div>
+                                            </div>
+                                        </AccordionPanel>
+                                    </AccordionItem>
+                                </Accordion>
+                            </div>
+                            <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                <h1><b>Order Total </b></h1>
+                                <h1><b>{total.toFixed(2)}</b></h1>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

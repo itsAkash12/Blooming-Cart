@@ -335,15 +335,38 @@
     margin: 0px 0px 30px;
     padding: 15px 20px 10px;
     text-align: left;
+    font-weight: bold;
 
+}
+.address div{
+    margin-top: 4px;
 }
 
 .address input {
     border: 1px solid grey;
     padding: 5px;
     margin-top: 8px;
+    /* width: 100%; */
 }
+.inputtags input{
+    border: 1px solid grey;
+    padding: 5px;
+    margin-top: 8px;
+    width: 100%;
+}
+.input {
+    width: 30%;
 
+}
+.method{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.method div{
+    border: 1px solid black;
+    padding: 8px;
+}
 .nameOfUser {
     background-color: #ffffff;
     border-color: #5f3c86;

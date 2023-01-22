@@ -7,7 +7,7 @@ import { ShopingCart } from "../pages/Cart/ShopingCart";
 import Homepage from "../pages/Homepage";
 import Signup from "../pages/Signup";
 import Login from "../pages/Login";
-import PaymentsPage from "../pages/Cart/PaymentsPage";
+import {PaymentsPage} from "../pages/Cart/PaymentsPage";
 import Footer from "../components/Footer/Footer";
 import { Delivery } from "../pages/Cart/Delivery";
 import Indvidual from "../pages/Indvidual";

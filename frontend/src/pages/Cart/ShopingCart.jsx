@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "./cart.css"
 
-import { DeleteIcon } from '@chakra-ui/icons'
-
-
 import {
     Accordion,
     AccordionItem,
@@ -12,8 +9,7 @@ import {
     AccordionIcon,
     Box
 } from '@chakra-ui/react'
-import axios from 'axios';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { GetCart } from './GetCart';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCart } from '../../redux/action';

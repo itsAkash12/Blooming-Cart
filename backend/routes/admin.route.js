@@ -24,7 +24,7 @@ app.post("/products",async(req,res)=>{
     try{
         let createProduct = new Products(req.body)
         await createProduct.save()
-        res.send("Product has created")
+        res.send({msg:"Product has created"})
 
     }catch(e){
         res.send(e.message)

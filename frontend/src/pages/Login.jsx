@@ -41,7 +41,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`http://localhost:8080/users/login`, {
+      .post(`https://dull-pink-tortoise-wrap.cyclic.app/users/login`, {
         email: user.email,
         password: user.password,
       })

@@ -11,9 +11,6 @@ import {PaymentsPage} from "../pages/Cart/PaymentsPage";
 import Footer from "../components/Footer/Footer";
 import { Delivery } from "../pages/Cart/Delivery";
 import Indvidual from "../pages/Indvidual";
-
-import { GetCart } from "../pages/Cart/GetCart";
-
 import Allusers from "../pages/AdminPages/Allusers";
 import Dashboard from "../pages/AdminPages/Dashboard";
 import Allproducts from "../pages/AdminPages/Allproducts";
@@ -21,7 +18,6 @@ import Order from "../pages/AdminPages/Order";
 import Adding from "../pages/AdminPages/Adding";
 import Productdata from "../pages/Productdata";
 import PrivateRoute from "./PrivateRoute";
-import Loader from "../pages/Loader";
 
 
 export default function AllRoutes() {

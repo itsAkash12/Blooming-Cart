@@ -25,7 +25,7 @@ const Allusers = () => {
 
   const handleData = async () => {
     try {
-      let res = await fetch("http://localhost:8080/admin/users");
+      let res = await fetch("https://dull-pink-tortoise-wrap.cyclic.app/admin/users");
       let result = await res.json();
       setData(result);
       setLoading(false);
@@ -40,11 +40,13 @@ const Allusers = () => {
   }, []);
 
   const handleClick = async (id) => {
+    console.log(id);
     try {
-      let res = await fetch(`http://localhost:8080/admin/users/${id}`, {
+      await fetch(`https://dull-pink-tortoise-wrap.cyclic.app/admin/users/${id}`, {
         method: "DELETE",
       });
       console.log("deleted sucessfully");
+      handleData();
       toast({
         title: "Deleted",
         description: "Successfully Deleted User",
@@ -53,7 +55,7 @@ const Allusers = () => {
         duration: 1000,
         isClosable: true,
       });
-      handleData();
+     
     } catch (error) {
       console.log("error");
       toast({

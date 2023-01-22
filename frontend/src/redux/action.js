@@ -23,7 +23,7 @@ const getCart = () => (dispatch) => {
     // console.log(params)
     let token = localStorage.getItem("token")
     dispatch(getCartRequest())
-    return axios.get(`http://localhost:8080/carts`, {
+    return axios.get(`https://dull-pink-tortoise-wrap.cyclic.app/carts`, {
         headers: {
             "Content-Type": "application/json",
             "Authorization": token
@@ -39,7 +39,7 @@ const getCart = () => (dispatch) => {
 const deleteItem = async (id) => {
 
     try {
-        await axios.delete(`http://localhost:8080/carts/${id}`, {
+        await axios.delete(`https://dull-pink-tortoise-wrap.cyclic.app/carts/${id}`, {
             headers: {
                 'Authorization': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzY2E3NzMzYjIyMjlmMWM1YTAzZTRkNiIsInJvbGUiOiJFeHBsb3JlciIsImVtYWlsIjoic3JAZ21haWwuY29tIiwibmFtZSI6InJhaHVsIiwiaWF0IjoxNjc0MjEzMjA2fQ.BfAMpuadLZfdULOXvlXTDIyQPUL2dlg3DZmFB6-VypA"
 

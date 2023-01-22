@@ -11,12 +11,13 @@ export const GetCart = () => {
     const options = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
     const handleChange = (value, id) => {
+        let token = localStorage.getItem("token")
 
-        axios.patch(`http://localhost:8080/carts/${id}`, {
+        axios.patch(`https://dull-pink-tortoise-wrap.cyclic.app/carts/${id}`, {
             quantity: value,
         }, {
             headers: {
-                'authorization': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzY2E3NzMzYjIyMjlmMWM1YTAzZTRkNiIsInJvbGUiOiJFeHBsb3JlciIsImVtYWlsIjoic3JAZ21haWwuY29tIiwibmFtZSI6InJhaHVsIiwiaWF0IjoxNjc0MjEzMjA2fQ.BfAMpuadLZfdULOXvlXTDIyQPUL2dlg3DZmFB6-VypA"
+                'authorization': token
             }
         }).then((res) => {
             // setCartItems(res.data)
@@ -37,7 +38,8 @@ export const GetCart = () => {
     const deleteProduct = (id) => {
         setdummy(false)
         let token = localStorage.getItem("token")
-        const response = axios.delete(`http://localhost:8080/carts/${id}`, {
+        
+        const response = axios.delete(`https://dull-pink-tortoise-wrap.cyclic.app/carts/${id}`, {
             headers: {
                 "Content-Type": "application/json",
                 'Authorization': token

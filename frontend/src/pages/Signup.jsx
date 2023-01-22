@@ -63,7 +63,7 @@ const Signup = () => {
     }
     let name = user.firstname;
     axios
-      .post(`http://localhost:8080/users/signup`, {
+      .post(`https://dull-pink-tortoise-wrap.cyclic.app/users/signup`, {
         name: name,
         email: user.email,
         password: user.password,

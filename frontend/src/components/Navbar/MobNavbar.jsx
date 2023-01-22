@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import {
   Box,
   Image,
@@ -6,7 +6,7 @@ import {
 } from "@chakra-ui/react";
 import logo from "../../assets/images/Blooming Cart.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping, faBars } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import "../../styles/navbar.css";
 import DrawerJSX from "./DrawerJSX";

@@ -1,10 +1,9 @@
 import React from 'react'
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Indvidual from './Indvidual';
 import axios from "axios";
-import { Box, Image, Text,Badge, Button, Center, 
-  Circle, Divider, Flex, HStack, Spacer, Spinner,
-   Stack, useToast, VStack, Wrap } from '@chakra-ui/react';
+import { Box, Image, Text,Badge, Button, HStack,Divider,
+   Stack, useToast, VStack } from '@chakra-ui/react';
    import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons';
 import { useParams } from 'react-router-dom';
 import { BiShoppingBag  } from "react-icons/bi";
@@ -21,7 +20,7 @@ const Productdata = () => {
 
   let auth=localStorage.getItem("token")
   useEffect(() => {
-    axios.get(`http://localhost:8080/products/${id}`, {
+    axios.get(`https://dull-pink-tortoise-wrap.cyclic.app/products/${id}`, {
       headers: {
         'Authorization': auth
       }
@@ -42,7 +41,7 @@ const Productdata = () => {
       category: el.category
     }
     //console.log("post",post)
-    axios.post("http://localhost:8080/carts/",post,{
+    axios.post("https://dull-pink-tortoise-wrap.cyclic.app/carts/",post,{
       headers: {
         'Authorization': auth
     }

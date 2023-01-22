@@ -8,29 +8,30 @@ import PieChart from "../../components/admin/PieChart";
 const Dashboard = () => {
   const [user, setUser] = useState(0);
   const [product, setProduct] = useState(0);
-  let totalAmount = 99989;
+  const [amount, setAmount] = useState(0);
+  var totalAmount=0;
 
   const handleData = async () => {
     try {
-      let res = await fetch("http://localhost:8080/admin/users");
-      let res2 = await fetch("http://localhost:8080/admin/products");
+      let res = await fetch("https://dull-pink-tortoise-wrap.cyclic.app/admin/users");
+      let res2 = await fetch("https://dull-pink-tortoise-wrap.cyclic.app/admin/products");
       let result = await res.json();
       let result2 = await res2.json();
       setUser(result.length);
       setProduct(result2.length);
       console.log(result2);
       // setData(result2);
-      totalAmount = 0;
       result2 &&
         result2.forEach((item) => {
           totalAmount += +Math.round(item.price);
         });
       console.log(totalAmount);
+      setAmount(totalAmount);
     } catch (error) {
       console.log(error);
     }
   };
-
+  console.log(totalAmount);
   useEffect(() => {
     handleData();
   }, []);
@@ -86,7 +87,7 @@ const Dashboard = () => {
           <Box>
             <Box bg="twitter.500" className="detail1_container">
               <Text>Total Amount</Text>
-              <Text>{totalAmount}</Text>
+              <Text>{amount}</Text>
             </Box>
             <Box className="detail2_container">
               <Box bg="yellow.400">

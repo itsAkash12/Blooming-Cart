@@ -1,10 +1,11 @@
-import { Box, Button, Heading, Input, Select, Stack } from "@chakra-ui/react";
+import { Box, Button, Heading, Input, Select, Stack, useToast } from "@chakra-ui/react";
 import React from "react";
 import { useState } from "react";
 import Sidebar from "../../components/admin/Sidebar";
 import "../../styles/adminpages.css";
 
 const Adding = () => {
+  const toast = useToast();
   const [input, setInput] = useState({
     image: "",
     productname: "",
@@ -22,15 +23,23 @@ const Adding = () => {
 
   const handleClick = async () => {
     try {
-      let res = await fetch("http://localhost:8080/admin/products", {
+      let res = await fetch("https://dull-pink-tortoise-wrap.cyclic.app/admin/products", {
         method: "POST",
         body: JSON.stringify(input),
         headers:{
           "Content-Type":"application/json"
         }
       });
+      toast({
+        title: "Added",
+        description: "Successfully Added Product",
+        status: "success",
+        position: "top",
+        duration: 1000,
+        isClosable: true,
+      });
       let response = await res.json();
-      console.log("Products Created Successfully");
+      console.log(response);
     } catch (error) {
       console.log(error);
     }

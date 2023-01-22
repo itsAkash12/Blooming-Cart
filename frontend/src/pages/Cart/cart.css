@@ -289,8 +289,9 @@
     }
 }
 
-@media (max-width: 600px) {
+@media (min-width: 450px) and (max-width: 600px) {
     .maindivEmtyCartDataBelow {
+        width: 90%;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: auto;
@@ -300,6 +301,13 @@
     .maindivEmtyCartDataBelow1 {
         width: 100%;
         margin: auto;
+    }
+}
+@media (min-width: 200px) and (max-width: 450px){
+    .maindivEmtyCartDataBelow {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: auto;
     }
 }
 

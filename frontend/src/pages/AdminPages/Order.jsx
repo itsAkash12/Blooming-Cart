@@ -6,8 +6,6 @@ import {
   TableContainer,
   Tbody,
   Td,
-  Text,
-  Tfoot,
   Th,
   Thead,
   Tr,
@@ -16,7 +14,7 @@ import React from "react";
 import Sidebar from "../../components/admin/Sidebar";
 import "../../styles/adminpages.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen, faTrash, faUserPen } from "@fortawesome/free-solid-svg-icons";
+import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const Order = () => {
   return (

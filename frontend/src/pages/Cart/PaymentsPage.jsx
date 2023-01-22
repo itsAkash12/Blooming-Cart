@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import "./cart.css"
 import { LockIcon } from '@chakra-ui/icons'
 // import { useDispatch, useSelector } from 'react-redux';
-import { Text, Stack } from '@chakra-ui/react'
+import { Text, Stack, useToast } from '@chakra-ui/react'
 import {
   Accordion,
   AccordionItem,
@@ -11,10 +11,13 @@ import {
   AccordionIcon,
   Box
 } from '@chakra-ui/react'
+import {useNavigate} from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux'
 import { getCart } from '../../redux/action'
 
 export const PaymentsPage = () => {
+  const toast = useToast();
+  const navigate = useNavigate()
   const data = useSelector(store => store.cart)
 
   const dispatch = useDispatch()
@@ -23,6 +26,18 @@ export const PaymentsPage = () => {
   useEffect(() => {
     dispatch(getCart())
   }, [data.length])
+
+  const orderPlace =()=> {
+    toast({
+      title: "Order Placed",
+      description: " Order Placed Successfully",
+      status: "success",
+      position: "top",
+      duration: 3000,
+      isClosable: true,
+    });
+    navigate("/")
+  }
 
 
   let total = 0
@@ -385,7 +400,7 @@ export const PaymentsPage = () => {
                 </div>
               </div>
             </div>
-            <button className='continueShoppingButton'>CONTINUE TO REVIEW ORDER</button>
+            <button onClick={orderPlace} className='continueShoppingButton'>Place Your Order</button>
           </div>
         </div>
         <div className='secondDiv'>

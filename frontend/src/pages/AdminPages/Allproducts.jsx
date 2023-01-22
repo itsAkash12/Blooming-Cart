@@ -25,7 +25,7 @@ const Allproducts = () => {
 
   const handleData = async () => {
     try {
-      let res = await fetch("http://localhost:8080/admin/products");
+      let res = await fetch("https://dull-pink-tortoise-wrap.cyclic.app/admin/products");
       let result = await res.json();
       setLoading(false);
       setData(result);
@@ -41,7 +41,7 @@ const Allproducts = () => {
 
   const handleClick = async (id) => {
     try {
-      let res = await fetch(`http://localhost:8080/admin/products/${id}`, {
+       await fetch(`https://dull-pink-tortoise-wrap.cyclic.app/admin/products/${id}`, {
         method: "DELETE",
       });
       console.log("deleted sucessfully");

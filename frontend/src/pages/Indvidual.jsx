@@ -30,7 +30,7 @@ const Indvidual = () => {
     }
     //console.log("post",post)
     try {
-      let res = await axios.post("http://localhost:8080/carts/",post,{
+      let res = await axios.post("https://dull-pink-tortoise-wrap.cyclic.app/carts/",post,{
         headers: {
           'Authorization': auth
       }
@@ -68,11 +68,11 @@ const Indvidual = () => {
 
   useEffect(() => {
     if(params){
-      axios.get(`http://localhost:8080/products?category=${params}&page=1`)
+      axios.get(`https://dull-pink-tortoise-wrap.cyclic.app/products?category=${params}`)
       .then((res) => setData(res.data))
       .catch((er) => console.log(er))
     }else{
-      axios.get(`http://localhost:8080/products`)
+      axios.get(`https://dull-pink-tortoise-wrap.cyclic.app/`)
       .then((res) => setData(res.data))
       .catch((er) => console.log(er))
     }

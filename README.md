@@ -1,380 +1,105 @@
-<!-- All the folder structure information -->
-=> Before you start:
-   - I have already created all the folders which you will need during journey.
+![BloomingCart](https://user-images.githubusercontent.com/107500115/213975805-bf53f7d3-7c7a-4ae4-9e62-950a0f4fba61.png)
 
-   - If you are doing creating any folders then please inform the team members that you have created a folder with following name.
+# Clone of 1800flowers.com
 
-   - I have already setup all the things related to `Chakra UI` and `react-router-dom` 
-     You guys have to just start developments.
-     if you want to work on redux the there will be a folder with store file also present there.
+Deployed Link - https://blooming-cart.netlify.app/
 
-   - Also given you sample `Navbar` and `Footer` components.
+## What is Blooming Cart?
 
-   - You will get all the routing files in `routes` folder.
+Grab Exciting Deals On Gifting Products Only On Blooming Cart India Store. Shop Unrivalled Range Of Flowers and Gifting Products. It is an ecommerce website where we can interact and place our orders
 
-   - You can also use context-api if needed.
+# Technology Stack Used
 
-   - All the end-points and base-url should be in env files.
-   
-   - Use `assets` folder for images,pdf,video..etc
-   - Use `components` folder for making components either in folder or without folder 
-     just be sure naming should not match with other folder/file to avoid collision
-   - Use `pages` folder to create all the pages
-   - Use `routes`  folder to all the routing related stuffs
-   - Use `scripts` folder for any js script you wanna write.(this folder helps you to 
-     keep jsx and js folder separate)
-   - Use `styles` folder to keep your all css files.
-   - Use `constants` folder to create all the constants (Helps you reducing hard-coding)(Most recommended)
+In this project we have used the following tech stack.
 
-<!-- Cloning related and Getting started related stuffs -->
-=> Clone the directory to start work `git clone  https://github.com/itsAkash12/organic-pets-4780.git`
+- HTML
+- CSS
+- JAVASCRIPT
+- ReactJS
+- Redux
+- EXPRESS
+- NODEJS
+- MONGODB - Atlas
 
-=> Ok guys here are the some basic instruction before you start , If you are here you are successfully pulled the code and you are ready to type you first command in terminal.
+To make this clone we have used HTMl, CSS and JavaScript, ReactJS for front-end and NodeJS, ExpressJs and MongoDB for back-end, and for conecting the Database we have used MongoDB.
 
-Step-1- Navigate to proeject directory using `cd organic-pets-4780`
+# Libraries Used
 
-Step-2- install node_modules using `npm install`
+All the images, icons, and links have taken from the original website (https://www.1800flowers.com/)
 
-Step-3- install some common dependencies:- <br />
-            - `npm install react-router-dom redux react-redux redux-thunk axios`<br />
-            - `npm install @chakra-ui/react @emotion/react @emotion/styled framer-motion`
+# Snapshots of Our Project 📸
 
-<!-- Git related stuffs -->
-=> Some basic requirements(Mandatory):
-       1- You have to work in daily branches manner, so you have to create
-          new branch everyday . So you have make branch using your student_code 
-          followed the day in which you working. below is the eg for my branches.
+## Landing Page
 
-               - branch-naming style: fw21_XXXX_day-x
+-Desktop View
+<img width="710" alt="image" src="https://user-images.githubusercontent.com/107500115/213977029-5eefd237-0127-4095-80ec-4664fa3800da.png" />
 
-            -for day-2 branch name should be: fw20_1302_day-2
-            -for day-3 branch name should be: fw20_1302_day-3
-            -for day-4 branch name should be: fw20_1302_day-4
-            -for day-5 branch name should be: fw20_1302_day-5
+-Mobile View
+<img width="225" alt="image" src="https://user-images.githubusercontent.com/107500115/213977166-02b3397b-33bf-40ec-b4ed-6a0be20ff836.png" />
 
-        2- How to create branches:
-            - $git branch <branch-name> (without angle brackets)
-        
-        3- How to switch branches:
-            -$git switch <branch-name>  (without angle brackets)
-        
-        4- How to pull:
-            -$git pull origin <branch-name>    (without angle brackets)
+This is the landing page of our website. You can see and choose all latest and trending top products from here.
 
+## SignUp Page
 
-=> Some helpful Tools during development :<br />
-    - Chakra-UI - https://chakra-ui.com/<br />
-    - Chakra-Templets - https://chakra-templates.dev/#<br />
-    - String Builder - https://codebeautify.org/string-builder<br />
-    - Chat-gpt - https://chat.openai.com/chat<br />
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/107500115/213977571-2e02fee0-6e1e-4e58-9b47-92f934ea7c40.png" />
 
+You can signup with our website from here .
 
-# Work Flow Chart
+## Login Page
 
-Kirti - Backend
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/107500115/213977513-0a17ddde-66b2-43b7-bc3b-f4ee32c5e1e5.png" />
 
-# Endpoints
-`/users`
-`/products`
-* Make the necessary thngs from your side like cart or orders backend. Here i have provided a refrence where you can work upon.
+You can login to our website from here by entering required details.
 
-# Schemas
+## Product Page
 
-  `Product Schema`
-```
-{   
-    "id":0,
-    "images":["" , ""],
-    "name":"",
-    "short_desc":"",
-    "long_desc":"",
-    "price":0,
-    "strike_price":0,
-    "ratings":0,
-    "colors":"green",
-    "delivery_time":3,
-    "sizes":""
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/107500115/213977695-c5c79a04-343e-40de-9ef3-0dbd884bc58d.png" />
 
-} 
-```
+Here, you can choose a category of products whatever you want and add the necessary product.
+
+## SingleProduct Page
+
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/107500115/213978086-b39f856e-59cb-48a9-b214-668b8b33583d.png" />
+
+Here, you can see all of your products which are added into cart, you can avail the discount by applyling the promocode in respective field and you can remove any product from here also.
+
+## Cart page
+
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/107500115/213978175-790dc579-bde4-42ed-a370-527cd97c038a.png" />
+
+In this page you can add your quantity.
+
+## Address Page
+
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/107500115/213978398-4aa97439-5a35-41f4-ad8c-0e54e9ebc76a.png" />
+
+## Checkout Pae
 
 
 
-  `User Schema`
-  
-```
-{
-   "id":0,   
-  "name": "",
-  "email": "",
-  "password": "",
-  "account": {
-    "cart": [
-      {"id":0,
-        "images": ["", ""],
-        "name": "",
-        "short_desc": "",
-        "long_desc": "",
-        "price": 0,
-        "strike_price": 0,
-        "ratings": 0,
-        "colors":"",
-        "delivery_time": 0,
-        "sizes":"",
-        "quantity":0
-      },
-      {
-        "id":1,
-        "images": ["", ""],
-        "name": "",
-        "short_desc": "",
-        "long_desc": "",
-        "price": 0,
-        "strike_price": 0,
-        "ratings": 0,
-        "colors":"",
-        "delivery_time": 0,
-        "sizes":"",
-        "quantity":0
-      }
-    ],
-    "orders": [{
-        "id":0,
-        "images": ["", ""],
-        "name": "",
-        "short_desc": "",
-        "long_desc": "",
-        "price": 0,
-        "strike_price": 0,
-        "ratings": 0,
-        "colors":"",
-        "delivery_time": 0,
-        "sizes":"",
-        "quantity":0,
-        "address":""
-    }]
-  }
-}
-```
-- `Whole Database look after making request will be like this ==>`
+You can see lot of payment options here and you can choose any one of them to pay for your product.
 
-```
- 
- {
-  "users": [
-    {
-     "id":0,   
-    "name": "user-1",
-    "email": "",
-    "password": "",
-    "account": {
-      "cart": [
-        {"id":0,
-          "images": ["", ""],
-          "name": "",
-          "short_desc": "",
-          "long_desc": "",
-          "price": 0,
-          "strike_price": 0,
-          "ratings": 0,
-          "colors":"",
-          "delivery_time": 0,
-          "sizes":"",
-          "quantity":0
-        },
-        {
-          "id":1,
-          "images": ["", ""],
-          "name": "",
-          "short_desc": "",
-          "long_desc": "",
-          "price": 0,
-          "strike_price": 0,
-          "ratings": 0,
-          "colors":"",
-          "delivery_time": 0,
-          "sizes":"",
-          "quantity":0
-        }
-      ],
-      "orders": [{
-          "id":0,
-          "images": ["", ""],
-          "name": "",
-          "short_desc": "",
-          "long_desc": "",
-          "price": 0,
-          "strike_price": 0,
-          "ratings": 0,
-          "colors":"",
-          "delivery_time": 0,
-          "sizes":"",
-          "quantity":0,
-          "address":""
-      }]
-    }
-  },{
-    "id":1,   
-    "name": "user-2",
-    "email": "",
-    "password": "",
-    "account": {
-      "cart": [
-        {"id":0,
-          "images": ["", ""],
-          "name": "",
-          "short_desc": "",
-          "long_desc": "",
-          "price": 0,
-          "strike_price": 0,
-          "ratings": 0,
-          "colors":"",
-          "delivery_time": 0,
-          "sizes":"",
-          "quantity":0
-        },
-        {
-          "id":1,
-          "images": ["", ""],
-          "name": "",
-          "short_desc": "",
-          "long_desc": "",
-          "price": 0,
-          "strike_price": 0,
-          "ratings": 0,
-          "colors":"",
-          "delivery_time": 0,
-          "sizes":"",
-          "quantity":0
-        }
-      ],
-      "orders": [{
-          "id":0,
-          "images": ["", ""],
-          "name": "",
-          "short_desc": "",
-          "long_desc": "",
-          "price": 0,
-          "strike_price": 0,
-          "ratings": 0,
-          "colors":"",
-          "delivery_time": 0,
-          "sizes":"",
-          "quantity":0,
-          "address":""
-      }]
-    }
-  }
-  
-  ],
+## Summary Page
 
-PRODUCTS ==>
+# Limitations
 
-  "products": [
+Home page is fully responsive but some of the pages are not responsive mght not be properly visible on small screen devices.
 
-    {
-      "id": "category-name-1",
-      "items": [
-        {
-          "id": 0,
-          "images": ["", ""],
-          "name": "",
-          "short_desc": "",
-          "long_desc": "",
-          "price": 0,
-          "strike_price": 0,
-          "ratings": 0,
-          "colors": "",
-          "delivery_time": 0,
-          "sizes": ""
-        },
-        {
-          "id": 1,
-          "images": ["", ""],
-          "name": "",
-          "short_desc": "",
-          "long_desc": "",
-          "price": 0,
-          "strike_price": 0,
-          "ratings": 0,
-          "colors": "",
-          "delivery_time": 0,
-          "sizes": ""
-        }
-      ]
-    },
+# End Notes
 
-    {
-        "id": "category-name-2",
-        "items": [
-          {
-            "id": 0,
-            "images": ["", ""],
-            "name": "",
-            "short_desc": "",
-            "long_desc": "",
-            "price": 0,
-            "strike_price": 0,
-            "ratings": 0,
-            "colors": "",
-            "delivery_time": 0,
-            "sizes": ""
-          },
-          {
-            "id": 1,
-            "images": ["", ""],
-            "name": "",
-            "short_desc": "",
-            "long_desc": "",
-            "price": 0,
-            "strike_price": 0,
-            "ratings": 0,
-            "colors": "",
-            "delivery_time": 0,
-            "sizes": ""
-          }
-        ]
-      }
+In this project we have tried to a perfect clone of the original website as much as possible with very limited knowledge of front-end & back-end.
+This entire journey of making the project was awesome. We learned lots of things by applying to the real website and it gave us a lot of confidence.
 
-  ]
+# Team Members 🤝🏻
 
-  
-}
+We have a team of 4 members :
 
-```
+1. Akash Kumar Singh
 
+2. Kirti Gupta
 
-# Pages  
-  These are the pages we need in this project.
+3. Devender
 
-   //Akash
-   - `HomePage`
-   - `navbar`
-   - `footer`
-   - `admin panel`
+4. Rahul das
 
-   // Gaurav
-   - `SignupPage`
-   - `LoginPage`
-   - `Data Collection`
-   *try to make a cool UI*
-
-
-   //Rahul
-   - `Category wise ProductPage`
-   - `single product page`
-   *try to make a cool UI*
-
-
-   //Devender
-   - `CartPage` 
-   - `Checkout-Page`
-   - `Payment Integraton page`
-   *try to make a cool UI*
-
-<=====>PLEASE NOTE<=====>
-
-* Try to make a Good and Smooth UI because the Website which Looks good is also Feels good.
-* It will be our Last Project so lets make it fully functional and responsive and make it qualify to our resume/portfolio.
-
-***************************************************************** All the best guys ******************************************************************* 
+5. Gourav

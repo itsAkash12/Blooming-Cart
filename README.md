@@ -73,8 +73,9 @@ In this page you can add your quantity.
 
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/107500115/213978398-4aa97439-5a35-41f4-ad8c-0e54e9ebc76a.png" />
 
-## Checkout Pae
+## Checkout Page
 
+![image](https://user-images.githubusercontent.com/107500115/213979010-6fca840b-e794-47f3-a7c4-d31850e2c175.png)
 
 
 You can see lot of payment options here and you can choose any one of them to pay for your product.
